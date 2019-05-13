@@ -11,7 +11,7 @@
 #import "CXSlider.h"
 #import <MediaPlayer/MediaPlayer.h>
 
-const CGFloat CXBearingPlayerViewTopHeight = 40;
+const CGFloat CXBearingPlayerViewTopHeight = 50;
 const CGFloat CXBearingPlayerViewBottomHeight = 40;
 const CGFloat CXBearingPlayerViewBtnW = 40;
 const CGFloat CXBearingPlayerViewBtnH = 40;
@@ -37,6 +37,8 @@ const CGFloat CXBearingPlayerViewlabelW = 50;
 
 @property (nonatomic, strong) UIView   *topView;
 @property (nonatomic, strong) UIButton *backButton;
+@property (nonatomic, strong) UILabel *titleLabel;
+@property (nonatomic, strong) UIButton *shareButton;
 
 @property (nonatomic, strong) UIView   *bottomView;
 @property (nonatomic, strong) UIButton *playButton;   //播放/暂停
@@ -93,11 +95,11 @@ const CGFloat CXBearingPlayerViewlabelW = 50;
             bottom = play_viewSafeArea(self.superview).bottom - 10;
         } else if(play_viewSafeArea(self.superview).top > 0 &&play_viewSafeArea(self.superview).bottom > 0) {
             //竖屏
-            top = play_viewSafeArea(self.superview).top;
+            top = play_viewSafeArea(self.superview).top + 10;
             bottom = play_viewSafeArea(self.superview).bottom;
         }
     } else{
-        top = 0;
+        top = 10;
         bottom = 0;
     }
     
@@ -107,7 +109,9 @@ const CGFloat CXBearingPlayerViewlabelW = 50;
     //顶部
     self.topView.frame = CGRectMake(0, 0, _frame.size.width, topViewH);
     self.backButton.frame = CGRectMake(left, top, CXBearingPlayerViewBtnW, CXBearingPlayerViewBtnH);
-    
+    self.titleLabel.frame = CGRectMake(left + CXBearingPlayerViewBtnW, top, _frame.size.width - left - CXBearingPlayerViewBtnW - right - CXBearingPlayerViewBtnW - 10, CXBearingPlayerViewBtnH);
+    self.shareButton.frame = CGRectMake(_frame.size.width - CXBearingPlayerViewBtnW - right - 10, top,CXBearingPlayerViewBtnW, CXBearingPlayerViewBtnH);
+
     //低部
     self.bottomView.frame = CGRectMake(0, _frame.size.height - CXBearingPlayerViewBottomHeight - bottom, _frame.size.width, bottomViewH);
     self.playButton.frame = CGRectMake(left, 0, CXBearingPlayerViewBtnW, CXBearingPlayerViewBtnH);
@@ -212,19 +216,18 @@ const CGFloat CXBearingPlayerViewlabelW = 50;
             _isStartPan = NO;
         }
         if (changeXorY == 0) {//进度
-            /*
             self.fastTimeLabel.hidden = NO;
             
             if (touPoint.x - _lastPoint.x >= 1) {
                 _lastPoint = touPoint;
-                _fastCurrentTime += 2;
+                _fastCurrentTime += 0.5;
                 if (_fastCurrentTime > self.totalTime) {
                     _fastCurrentTime = self.totalTime;
                 }
             }
             if (touPoint.x - _lastPoint.x <= - 1) {
                 _lastPoint = touPoint;
-                _fastCurrentTime -= 2;
+                _fastCurrentTime -= 0.5;
                 if (_fastCurrentTime < 0) {
                     _fastCurrentTime = 0;
                 }
@@ -233,8 +236,7 @@ const CGFloat CXBearingPlayerViewlabelW = 50;
             NSString *currentTimeString = [self timeFormatted:(int)_fastCurrentTime];
             NSString *totalTimeString = [self timeFormatted:(int)self.totalTime];
             self.fastTimeLabel.text = [NSString stringWithFormat:@"%@/%@",currentTimeString,totalTimeString];
-            self.videoSlider.value = _fastCurrentTime/self.totalTime*1.0f;
-             */
+//            self.videoSlider.value = _fastCurrentTime/self.totalTime*1.0f;
         }else{//音量
             if (touPoint.y - _lastPoint.y >= 5) {
                 _lastPoint = touPoint;
@@ -249,11 +251,9 @@ const CGFloat CXBearingPlayerViewlabelW = 50;
     }else if (panGestureTouch.state == UIGestureRecognizerStateEnded){
         self.fastTimeLabel.hidden = YES;
          if (changeXorY == 0) {
-             /*
              if (_delegate && [_delegate respondsToSelector:@selector(seekToTime:bearingPlayerView:)]) {
                  [_delegate seekToTime:_fastCurrentTime bearingPlayerView:self];
              }
-              */
          }
         [self startHideControlTimer];
     }
@@ -263,6 +263,13 @@ const CGFloat CXBearingPlayerViewlabelW = 50;
     [self startHideControlTimer];
     if (_delegate && [_delegate respondsToSelector:@selector(backClick:)]) {
         [_delegate backClick:self];
+    }
+}
+
+- (void)shareButtonClick:(UIButton *)sender {
+    [self startHideControlTimer];
+    if (_delegate && [_delegate respondsToSelector:@selector(shareClick:)]) {
+        [_delegate shareClick:self];
     }
 }
 
@@ -386,6 +393,26 @@ const CGFloat CXBearingPlayerViewlabelW = 50;
     return _backButton;
 }
 
+- (UILabel *)titleLabel {
+    if (!_titleLabel) {
+        _titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+        _titleLabel.textColor = [UIColor whiteColor];
+        _titleLabel.font = [UIFont systemFontOfSize:16.0f];
+        [self.topView addSubview:_titleLabel];
+    }
+    return _titleLabel;
+}
+
+- (UIButton *)shareButton {
+    if (!_shareButton) {
+        _shareButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_shareButton setTitle:@"分享" forState:UIControlStateNormal];
+        [_shareButton.titleLabel setFont:[UIFont systemFontOfSize:16.0f]];
+        [_shareButton addTarget:self action:@selector(shareButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+        [self.topView addSubview:_shareButton];
+    }
+    return _shareButton;
+}
 - (UIView *)bottomView{
     if (!_bottomView) {
         //改渐变view
@@ -529,6 +556,8 @@ const CGFloat CXBearingPlayerViewlabelW = 50;
             [self.activityView stopAnimating];
             break;
         case CXAVPlayerStatusEnterBack:
+            break;
+        case CXAVPlayerStatusResignActive:
             break;
         case CXAVPlayerStatusBecomeActive:
             break;

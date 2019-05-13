@@ -16,7 +16,10 @@
  返回按钮被点击
  */
 - (void)backClick:(CXBearingPlayerView *)bearingPlayerView;
-
+/**
+ 分享按钮被点击
+ */
+- (void)shareClick:(CXBearingPlayerView *)bearingPlayerView;
 /**
  全屏按钮被点击
  */

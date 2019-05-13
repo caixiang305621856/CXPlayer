@@ -1,17 +1,17 @@
 //
-//  CXPlayerViewController.m
+//  CXPlayerManager.m
 //  CXPlayer_Example
 //
-//  Created by caixiang on 2019/5/12.
+//  Created by caixiang on 2019/5/13.
 //  Copyright © 2019年 caixiang305621856. All rights reserved.
 //
 
-#import "CXPlayerViewController.h"
+#import "CXPlayerManager.h"
 #import "CXPlayerView.h"
 #import "CXBearingPlayerView.h"
 #import "CXSlider.h"
 
-@interface CXPlayerViewController ()<CXVideoPlayerDelegate,CXBearingPlayerViewDelegate>
+@interface CXPlayerManager ()<CXVideoPlayerDelegate,CXBearingPlayerViewDelegate>
 {
     NSTimeInterval _seekToTime;
 }
@@ -32,31 +32,23 @@
  */
 @property (nonatomic, assign) BOOL isFullScreen;
 
-
 @end
 
-@implementation CXPlayerViewController
+@implementation CXPlayerManager
+
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    [self.view addSubview:self.backgroundView];
-    self.view.backgroundColor = [UIColor whiteColor];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeRotate:) name:UIApplicationDidChangeStatusBarFrameNotification object:nil];
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeRotate:) name:UIApplicationDidChangeStatusBarFrameNotification object:nil];
+    }
+    return self;
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    [self.navigationController setNavigationBarHidden:YES animated:YES];
-}
-
-- (void)viewDidDisappear:(BOOL)animated {
-    [super viewDidDisappear:animated];
-    [self.navigationController setNavigationBarHidden:NO animated:YES];
-}
-
+/*
 - (void)viewWillLayoutSubviews {
     [super viewWillLayoutSubviews];
     self.playerView.frame = self.bearingPlayerView.bounds;
@@ -64,20 +56,19 @@
         self.playerView.frame = CGRectMake(play_viewSafeArea(self.view).left, 0, self.bearingPlayerView.bounds.size.width - play_viewSafeArea(self.view).left - play_viewSafeArea(self.view).right, self.bearingPlayerView.bounds.size.height);
     }
 }
+ */
+
 
 #pragma mark - public
-/*
  - (void)playWithUrl:(NSString *)url inView:(UIView *)view {
- if (view) {
- self.backgroundView = view;
- [self.view addSubview:self.backgroundView];
- self.originFrame = view.frame;
- self.bearingPlayerView.halfScreenPanGestureEnabled = NO;
- [self.playerView setUrl:[NSURL URLWithString:VideoURL]];
- [self.playerView play];
+     if (view) {
+     self.backgroundView = view;
+     self.originFrame = view.frame;
+     self.bearingPlayerView.halfScreenPanGestureEnabled = NO;
+     [self.playerView setUrl:[NSURL URLWithString:url]];
+     [self.playerView play];
+     }
  }
- }
- */
 
 - (void)playWithUrl:(NSString *)url {
     self.originFrame = self.backgroundView.frame;
@@ -171,7 +162,7 @@
 - (void)refreshData:(NSTimeInterval)totalTime
            progress:(NSTimeInterval)currentTime
           loadRange:(NSTimeInterval)loadTime
-{    
+{
     if(!self.bearingPlayerView.sliderIsTouching){
         if (totalTime > 0) {
             self.bearingPlayerView.currentTime = currentTime;
@@ -195,6 +186,10 @@
         [self.playerView stop];
         !self.disMissBlcok?:self.disMissBlcok();
     }
+}
+
+- (void)shareClick:(CXBearingPlayerView *)bearingPlayerView {
+    NSLog(@"分享");
 }
 
 - (void)fullScreenBtnClick:(CXBearingPlayerView *)bearingPlayerView {
@@ -240,6 +235,12 @@
     }
     self.backgroundView.frame = frame;
     [self.bearingPlayerView fullScreenChanged:_isFullScreen frame:self.backgroundView.bounds];
+    //全屏横屏模式适配iPhonex系列
+    if (CGRectEqualToRect(self.bearingPlayerView.bounds, [UIScreen mainScreen].bounds)) {
+        self.playerView.frame = CGRectMake(play_viewSafeArea(self.bearingPlayerView).left, 0, self.bearingPlayerView.bounds.size.width - play_viewSafeArea(self.bearingPlayerView).left - play_viewSafeArea(self.bearingPlayerView).right, self.bearingPlayerView.bounds.size.height);
+    } else {
+        self.playerView.frame = self.backgroundView.bounds;
+    }
 }
 
 //自动横竖屏切换
@@ -252,7 +253,7 @@
 
 - (CXPlayerView *)playerView {
     if (!_playerView) {
-        _playerView = [[CXPlayerView alloc] init];
+        _playerView = [[CXPlayerView alloc] initWithFrame:self.bearingPlayerView.bounds];
         _playerView.delegate = self;
         [self.bearingPlayerView insertSubview:_playerView atIndex:0];
     }

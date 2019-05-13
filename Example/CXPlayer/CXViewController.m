@@ -8,6 +8,7 @@
 
 #import "CXViewController.h"
 #import "CXPlayerViewController.h"
+#import "CXPlayViewController.h"
 
 #define VideoURL @"http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"
 
@@ -19,6 +20,7 @@
 @implementation CXViewController
 
 - (IBAction)playClick:(id)sender {
+    /*
     CXPlayerViewController *playerViewController = [CXPlayerViewController new];
     playerViewController.disMissBlcok = ^{
         [self dismissViewControllerAnimated:YES completion:nil];
@@ -26,9 +28,13 @@
         
     [playerViewController seekToTimePlay:13];
     [playerViewController playWithUrl:VideoURL];
-
+*/
     
-    UINavigationController *na = [[UINavigationController alloc] initWithRootViewController:playerViewController];
+    CXPlayViewController *playViewController = [CXPlayViewController new];
+    playViewController.disMissBlcok = ^{
+        [self dismissViewControllerAnimated:YES completion:nil];
+    };
+    UINavigationController *na = [[UINavigationController alloc] initWithRootViewController:playViewController];
     [self.navigationController presentViewController:na animated:YES completion:^{
     }];
 }

@@ -19,6 +19,7 @@
  - CXAVPlayerStatusCacheEnd: 缓冲结束
  - CXAVPlayerStatusItemFailed: 视频资源问题
  - CXAVPlayerStatusEnterBack: 进入后台
+ - CXAVPlayerStatusResignActive: 即将进入后台
  - CXAVPlayerStatusBecomeActive: 从后台返回
  */
 typedef NS_ENUM(NSInteger, CXAVPlayerStatus) {
@@ -30,6 +31,7 @@ typedef NS_ENUM(NSInteger, CXAVPlayerStatus) {
     CXAVPlayerStatusCacheEnd,
     CXAVPlayerStatusItemFailed,
     CXAVPlayerStatusEnterBack,
+    CXAVPlayerStatusResignActive,
     CXAVPlayerStatusBecomeActive
 };
 

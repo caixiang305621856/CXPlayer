@@ -12,6 +12,8 @@
 		5A3523742287C030008911D8 /* CXSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A3523732287C030008911D8 /* CXSlider.m */; };
 		5A3523772287CACA008911D8 /* CXBearingPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A3523762287CACA008911D8 /* CXBearingPlayerView.m */; };
 		5A35237A2287CFE3008911D8 /* UIImage+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A3523792287CFE3008911D8 /* UIImage+Extension.m */; };
+		5AEF96002289ACEE00E6B655 /* CXPlayerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AEF95FF2289ACEE00E6B655 /* CXPlayerManager.m */; };
+		5AEF96032289AE1000E6B655 /* CXPlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AEF96022289AE1000E6B655 /* CXPlayViewController.m */; };
 		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58F195388D20070C39A /* CoreGraphics.framework */; };
 		6003F592195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
@@ -55,6 +57,10 @@
 		5A3523762287CACA008911D8 /* CXBearingPlayerView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CXBearingPlayerView.m; sourceTree = "<group>"; };
 		5A3523782287CFE3008911D8 /* UIImage+Extension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+Extension.h"; sourceTree = "<group>"; };
 		5A3523792287CFE3008911D8 /* UIImage+Extension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Extension.m"; sourceTree = "<group>"; };
+		5AEF95FE2289ACEE00E6B655 /* CXPlayerManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CXPlayerManager.h; sourceTree = "<group>"; };
+		5AEF95FF2289ACEE00E6B655 /* CXPlayerManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CXPlayerManager.m; sourceTree = "<group>"; };
+		5AEF96012289AE1000E6B655 /* CXPlayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CXPlayViewController.h; sourceTree = "<group>"; };
+		5AEF96022289AE1000E6B655 /* CXPlayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CXPlayViewController.m; sourceTree = "<group>"; };
 		6003F58A195388D20070C39A /* CXPlayer_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CXPlayer_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6003F58F195388D20070C39A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -165,6 +171,10 @@
 				873B8AEA1B1F5CCA007FD442 /* Main.storyboard */,
 				6003F5A5195388D20070C39A /* CXViewController.h */,
 				6003F5A6195388D20070C39A /* CXViewController.m */,
+				5AEF96012289AE1000E6B655 /* CXPlayViewController.h */,
+				5AEF96022289AE1000E6B655 /* CXPlayViewController.m */,
+				5AEF95FE2289ACEE00E6B655 /* CXPlayerManager.h */,
+				5AEF95FF2289ACEE00E6B655 /* CXPlayerManager.m */,
 				5A35236D22874211008911D8 /* CXPlayerViewController.h */,
 				5A35236E22874211008911D8 /* CXPlayerViewController.m */,
 				71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */,
@@ -395,6 +405,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5AEF96002289ACEE00E6B655 /* CXPlayerManager.m in Sources */,
+				5AEF96032289AE1000E6B655 /* CXPlayViewController.m in Sources */,
 				5A35236C228665CD008911D8 /* CXPlayerView.m in Sources */,
 				5A3523742287C030008911D8 /* CXSlider.m in Sources */,
 				5A35236F22874211008911D8 /* CXPlayerViewController.m in Sources */,

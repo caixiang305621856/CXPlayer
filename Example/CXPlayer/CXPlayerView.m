@@ -288,6 +288,10 @@ static void *VideoPlayer_PlayerItemLoadedTimeRangesContext = &VideoPlayer_Player
     [self setDelegateStatus:CXAVPlayerStatusEnterBack];
 }
 
+- (void)videoPlayWillResignActive:(NSNotification *)notic {
+    [self setDelegateStatus:CXAVPlayerStatusResignActive];    
+}
+
 - (void)videoPlayBecomeActive:(NSNotification *)notic {
     [self setDelegateStatus:CXAVPlayerStatusBecomeActive];
 }
@@ -439,6 +443,7 @@ static void *VideoPlayer_PlayerItemLoadedTimeRangesContext = &VideoPlayer_Player
                  object:nil];
     [center addObserver:self selector:@selector(videoPlayWaiting:) name:AVPlayerItemPlaybackStalledNotification object:nil];
     [center addObserver:self selector:@selector(videoPlayEnterBack:) name:UIApplicationDidEnterBackgroundNotification object:nil];
+    [center addObserver:self selector:@selector(videoPlayWillResignActive:) name:UIApplicationWillResignActiveNotification object:nil];
     [center addObserver:self selector:@selector(videoPlayBecomeActive:) name:UIApplicationDidBecomeActiveNotification object:nil];
 }
 
@@ -471,7 +476,6 @@ static void *VideoPlayer_PlayerItemLoadedTimeRangesContext = &VideoPlayer_Player
             return;
         }
         if (current > 0.f) {
-            NSLog(@"进度在变");
             [strongSelf setDelegateStatusOutCanPlay:CXAVPlayerStatusPlay];
         }
         if ([strongSelf.delegate respondsToSelector:@selector(refreshData:progress:loadRange:)]) {
@@ -491,6 +495,7 @@ static void *VideoPlayer_PlayerItemLoadedTimeRangesContext = &VideoPlayer_Player
     [[NSNotificationCenter defaultCenter] removeObserver:self name:AVAudioSessionRouteChangeNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:AVPlayerItemPlaybackStalledNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationDidEnterBackgroundNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationWillResignActiveNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationDidBecomeActiveNotification object:nil];
 }
 
