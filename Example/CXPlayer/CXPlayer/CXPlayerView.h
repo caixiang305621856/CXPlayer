@@ -78,11 +78,17 @@ NS_ASSUME_NONNULL_BEGIN
  AVLayerVideoGravityResizeAspectFill, // 等比例填充，直到填充满整个视图区域，其中一个维度的部分区域会被裁剪
  */
 @property (nonatomic, copy) NSString *videoGravity;
+
 @property (nonatomic, strong,readonly) AVPlayer *player;
+
 @property (nonatomic, strong,readonly) AVPlayerItem *playerItem;
+
 @property (nonatomic, strong,readonly) AVURLAsset *urlAsset;
+
 @property (nonatomic, strong,readonly) AVPlayerLayer *playerLayer;
+
 @property (nonatomic, assign,readonly) BOOL isPlaying;
+
 @property (nonatomic,weak) id<CXVideoPlayerDelegate> delegate;
 /**
  缓存时长
@@ -129,6 +135,7 @@ NS_ASSUME_NONNULL_BEGIN
  @param block 播放状态的回调
  */
 - (void)playOrPause:(void (^)(BOOL isPlay))block;
+
 /**
  设置播放倍速 0.5-2.0
 

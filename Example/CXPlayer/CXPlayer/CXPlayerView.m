@@ -37,7 +37,7 @@ static void *VideoPlayer_PlayerItemLoadedTimeRangesContext = &VideoPlayer_Player
 @implementation CXPlayerView
 
 - (void)dealloc {
-    NSLog(@"🔥CXPlayerView销毁了🔥");
+//    NSLog(@"🔥CXPlayerView销毁了🔥");
     [self resetPlayerItemIfNecessary];
 }
 
@@ -92,7 +92,6 @@ static void *VideoPlayer_PlayerItemLoadedTimeRangesContext = &VideoPlayer_Player
         [self startToSeek];
         CMTime cmTime =CMTimeMakeWithSeconds(time, 1);
         if (CMTIME_IS_INVALID(cmTime) || self.player.currentItem.status != AVPlayerStatusReadyToPlay) {
-            //已经异常了
             return;
         }
         /*
@@ -461,7 +460,6 @@ static void *VideoPlayer_PlayerItemLoadedTimeRangesContext = &VideoPlayer_Player
      [strongSelf setDelegateStatusOutCanPlay:CXAVPlayerStatusPlay];
      }];
      */
-
     
     self.timeObserverToken = [self.player addPeriodicTimeObserverForInterval:CMTimeMakeWithSeconds(1.0, 1.0) queue:dispatch_get_main_queue() usingBlock:^(CMTime time) {
         __strong typeof (weakSelf) strongSelf = weakSelf;

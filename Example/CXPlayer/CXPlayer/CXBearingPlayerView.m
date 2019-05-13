@@ -88,6 +88,7 @@ const CGFloat CXBearingPlayerViewlabelW = 50;
     CGFloat right = _isFullScreen?play_viewSafeArea(self.superview).right> 0?play_viewSafeArea(self.superview).right - 15:0:0;
     CGFloat top = 0;
     CGFloat bottom = 0;
+    
     if (_isFullScreen) {
         if (play_viewSafeArea(self.superview).top == 0 && play_viewSafeArea(self.superview).bottom > 0) {
             //横屏
@@ -324,11 +325,10 @@ const CGFloat CXBearingPlayerViewlabelW = 50;
         _isFullScreen = YES;
     }
     self.fullScreenButton.selected = isFullScreen;
-    [self.videoSlider fullScreenChanged:isFullScreen];
 }
 
 #pragma mark - set&get
--(UIView *)fullScreenView {
+- (UIView *)fullScreenView {
     if (!_fullScreenView) {
         _fullScreenView = [[UIView alloc] init];
         [self addSubview:_fullScreenView];

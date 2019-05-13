@@ -21,15 +21,16 @@
 @end
 
 @implementation CXSlider
+
 - (void)layoutSubviews {
     [super layoutSubviews];
     _frame = self.frame;
     _thumbTouchSize = _frame.size.height;
     _thumbVisibleSize = 10;
     _trackHeight = 2;
-    
     [self updateFrame];
 }
+
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
@@ -104,21 +105,25 @@
     }
     return _thumbImageView;
 }
+
 - (void)setTrackColor:(UIColor *)trackColor{
     self.trackImageView.backgroundColor = trackColor;
 }
+
 - (void)setBufferColor:(UIColor *)bufferColor{
     self.bufferImageView.backgroundColor = bufferColor;
 }
+
 - (void)setThumbValueColor:(UIColor *)thumbValueColor{
     self.thumbImageView.backgroundColor = thumbValueColor;
 }
+
 - (void)setTrackHeight:(CGFloat)trackHeight{
     _trackHeight = trackHeight;
     [self setNeedsLayout];
     [self layoutIfNeeded];
-    
 }
+
 - (void)setThumbVisibleSize:(CGFloat)thumbVisibleSize{
     _thumbVisibleSize = thumbVisibleSize;
     [self setNeedsLayout];
@@ -126,7 +131,6 @@
 }
 
 - (void)setBufferProgress:(CGFloat)bufferProgress{
-    
     bufferProgress = [self valid:bufferProgress];
     if (_bufferProgress == bufferProgress) {
         return;
@@ -134,8 +138,8 @@
     _bufferProgress = bufferProgress;
     self.bufferImageView.frame = CGRectMake(0, (_frame.size.height - _trackHeight) * 0.5, _bufferProgress * _frame.size.width, _trackHeight);
 }
+
 - (void)setValue:(CGFloat)value {
-    
     value = [self valid:value];
     if (_value == value) {
         return;
@@ -169,12 +173,6 @@
         self.thumbImageView.backgroundColor = [UIColor clearColor];
     }
 }
-//横竖屏转换
-- (void)fullScreenChanged:(BOOL)isFullScreen{
-    _frame = self.bounds;
-    [self setNeedsLayout];
-    [self layoutIfNeeded];
-}
 
 - (BOOL)beginTrackingWithTouch:(UITouch *)touch withEvent:(UIEvent *)event {
     CGPoint location = [touch locationInView:self];
@@ -185,6 +183,7 @@
     [self sendActionsForControlEvents:UIControlEventEditingDidBegin];
     return YES;
 }
+
 - (BOOL)continueTrackingWithTouch:(UITouch *)touch withEvent:(UIEvent *)event {
     CGPoint location = [touch locationInView:self];
     
@@ -195,6 +194,7 @@
     }
     return YES;
 }
+
 - (void)endTrackingWithTouch:(UITouch *)touch withEvent:(UIEvent *)event {
     self.thumbImageView.highlighted = NO;
     [self sendActionsForControlEvents:UIControlEventEditingDidEnd];

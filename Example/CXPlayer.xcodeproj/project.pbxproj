@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5A35236C228665CD008911D8 /* CXPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A35236B228665CD008911D8 /* CXPlayerView.m */; };
 		5A35236F22874211008911D8 /* CXPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A35236E22874211008911D8 /* CXPlayerViewController.m */; };
-		5A3523742287C030008911D8 /* CXSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A3523732287C030008911D8 /* CXSlider.m */; };
-		5A3523772287CACA008911D8 /* CXBearingPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A3523762287CACA008911D8 /* CXBearingPlayerView.m */; };
 		5A35237A2287CFE3008911D8 /* UIImage+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A3523792287CFE3008911D8 /* UIImage+Extension.m */; };
-		5AEF96002289ACEE00E6B655 /* CXPlayerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AEF95FF2289ACEE00E6B655 /* CXPlayerManager.m */; };
-		5AEF96032289AE1000E6B655 /* CXPlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AEF96022289AE1000E6B655 /* CXPlayViewController.m */; };
+		5AEF960F2289C59900E6B655 /* CXPlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AEF96052289C59900E6B655 /* CXPlayViewController.m */; };
+		5AEF96102289C59900E6B655 /* CXSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AEF96062289C59900E6B655 /* CXSlider.m */; };
+		5AEF96112289C59900E6B655 /* CXPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AEF96082289C59900E6B655 /* CXPlayerView.m */; };
+		5AEF96122289C59900E6B655 /* CXPlayerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AEF96092289C59900E6B655 /* CXPlayerManager.m */; };
+		5AEF96132289C59900E6B655 /* CXBearingPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AEF960D2289C59900E6B655 /* CXBearingPlayerView.m */; };
 		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58F195388D20070C39A /* CoreGraphics.framework */; };
 		6003F592195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
@@ -47,20 +47,20 @@
 		255BBEFBA0F5B744AD5899FB /* Pods-CXPlayer_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CXPlayer_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-CXPlayer_Example/Pods-CXPlayer_Example.release.xcconfig"; sourceTree = "<group>"; };
 		35F9F332CC094DEF5FAD5A8D /* Pods-CXPlayer_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CXPlayer_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CXPlayer_Example/Pods-CXPlayer_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		47E052B1FA88F8A88451A852 /* CXPlayer.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = CXPlayer.podspec; path = ../CXPlayer.podspec; sourceTree = "<group>"; };
-		5A35236A228665CD008911D8 /* CXPlayerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CXPlayerView.h; sourceTree = "<group>"; };
-		5A35236B228665CD008911D8 /* CXPlayerView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CXPlayerView.m; sourceTree = "<group>"; };
 		5A35236D22874211008911D8 /* CXPlayerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CXPlayerViewController.h; sourceTree = "<group>"; };
 		5A35236E22874211008911D8 /* CXPlayerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CXPlayerViewController.m; sourceTree = "<group>"; };
-		5A3523722287C030008911D8 /* CXSlider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CXSlider.h; sourceTree = "<group>"; };
-		5A3523732287C030008911D8 /* CXSlider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CXSlider.m; sourceTree = "<group>"; };
-		5A3523752287CACA008911D8 /* CXBearingPlayerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CXBearingPlayerView.h; sourceTree = "<group>"; };
-		5A3523762287CACA008911D8 /* CXBearingPlayerView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CXBearingPlayerView.m; sourceTree = "<group>"; };
 		5A3523782287CFE3008911D8 /* UIImage+Extension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+Extension.h"; sourceTree = "<group>"; };
 		5A3523792287CFE3008911D8 /* UIImage+Extension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Extension.m"; sourceTree = "<group>"; };
-		5AEF95FE2289ACEE00E6B655 /* CXPlayerManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CXPlayerManager.h; sourceTree = "<group>"; };
-		5AEF95FF2289ACEE00E6B655 /* CXPlayerManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CXPlayerManager.m; sourceTree = "<group>"; };
-		5AEF96012289AE1000E6B655 /* CXPlayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CXPlayViewController.h; sourceTree = "<group>"; };
-		5AEF96022289AE1000E6B655 /* CXPlayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CXPlayViewController.m; sourceTree = "<group>"; };
+		5AEF96052289C59900E6B655 /* CXPlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXPlayViewController.m; sourceTree = "<group>"; };
+		5AEF96062289C59900E6B655 /* CXSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXSlider.m; sourceTree = "<group>"; };
+		5AEF96072289C59900E6B655 /* CXBearingPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXBearingPlayerView.h; sourceTree = "<group>"; };
+		5AEF96082289C59900E6B655 /* CXPlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXPlayerView.m; sourceTree = "<group>"; };
+		5AEF96092289C59900E6B655 /* CXPlayerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXPlayerManager.m; sourceTree = "<group>"; };
+		5AEF960A2289C59900E6B655 /* CXPlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXPlayViewController.h; sourceTree = "<group>"; };
+		5AEF960B2289C59900E6B655 /* CXSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXSlider.h; sourceTree = "<group>"; };
+		5AEF960C2289C59900E6B655 /* CXPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXPlayerView.h; sourceTree = "<group>"; };
+		5AEF960D2289C59900E6B655 /* CXBearingPlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXBearingPlayerView.m; sourceTree = "<group>"; };
+		5AEF960E2289C59900E6B655 /* CXPlayerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXPlayerManager.h; sourceTree = "<group>"; };
 		6003F58A195388D20070C39A /* CXPlayer_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CXPlayer_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6003F58F195388D20070C39A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -127,6 +127,23 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		5AEF96042289C59900E6B655 /* CXPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				5AEF96072289C59900E6B655 /* CXBearingPlayerView.h */,
+				5AEF960D2289C59900E6B655 /* CXBearingPlayerView.m */,
+				5AEF960E2289C59900E6B655 /* CXPlayerManager.h */,
+				5AEF96092289C59900E6B655 /* CXPlayerManager.m */,
+				5AEF960C2289C59900E6B655 /* CXPlayerView.h */,
+				5AEF96082289C59900E6B655 /* CXPlayerView.m */,
+				5AEF960A2289C59900E6B655 /* CXPlayViewController.h */,
+				5AEF96052289C59900E6B655 /* CXPlayViewController.m */,
+				5AEF960B2289C59900E6B655 /* CXSlider.h */,
+				5AEF96062289C59900E6B655 /* CXSlider.m */,
+			);
+			path = CXPlayer;
+			sourceTree = "<group>";
+		};
 		6003F581195388D10070C39A = {
 			isa = PBXGroup;
 			children = (
@@ -164,6 +181,7 @@
 		6003F593195388D20070C39A /* Example for CXPlayer */ = {
 			isa = PBXGroup;
 			children = (
+				5AEF96042289C59900E6B655 /* CXPlayer */,
 				5A3523782287CFE3008911D8 /* UIImage+Extension.h */,
 				5A3523792287CFE3008911D8 /* UIImage+Extension.m */,
 				6003F59C195388D20070C39A /* CXAppDelegate.h */,
@@ -171,21 +189,11 @@
 				873B8AEA1B1F5CCA007FD442 /* Main.storyboard */,
 				6003F5A5195388D20070C39A /* CXViewController.h */,
 				6003F5A6195388D20070C39A /* CXViewController.m */,
-				5AEF96012289AE1000E6B655 /* CXPlayViewController.h */,
-				5AEF96022289AE1000E6B655 /* CXPlayViewController.m */,
-				5AEF95FE2289ACEE00E6B655 /* CXPlayerManager.h */,
-				5AEF95FF2289ACEE00E6B655 /* CXPlayerManager.m */,
 				5A35236D22874211008911D8 /* CXPlayerViewController.h */,
 				5A35236E22874211008911D8 /* CXPlayerViewController.m */,
 				71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */,
 				6003F5A8195388D20070C39A /* Images.xcassets */,
 				6003F594195388D20070C39A /* Supporting Files */,
-				5A35236A228665CD008911D8 /* CXPlayerView.h */,
-				5A35236B228665CD008911D8 /* CXPlayerView.m */,
-				5A3523722287C030008911D8 /* CXSlider.h */,
-				5A3523732287C030008911D8 /* CXSlider.m */,
-				5A3523752287CACA008911D8 /* CXBearingPlayerView.h */,
-				5A3523762287CACA008911D8 /* CXBearingPlayerView.m */,
 			);
 			name = "Example for CXPlayer";
 			path = CXPlayer;
@@ -405,16 +413,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5AEF96002289ACEE00E6B655 /* CXPlayerManager.m in Sources */,
-				5AEF96032289AE1000E6B655 /* CXPlayViewController.m in Sources */,
-				5A35236C228665CD008911D8 /* CXPlayerView.m in Sources */,
-				5A3523742287C030008911D8 /* CXSlider.m in Sources */,
+				5AEF96122289C59900E6B655 /* CXPlayerManager.m in Sources */,
 				5A35236F22874211008911D8 /* CXPlayerViewController.m in Sources */,
 				6003F59E195388D20070C39A /* CXAppDelegate.m in Sources */,
 				6003F5A7195388D20070C39A /* CXViewController.m in Sources */,
+				5AEF96102289C59900E6B655 /* CXSlider.m in Sources */,
+				5AEF96112289C59900E6B655 /* CXPlayerView.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
-				5A3523772287CACA008911D8 /* CXBearingPlayerView.m in Sources */,
+				5AEF96132289C59900E6B655 /* CXBearingPlayerView.m in Sources */,
 				5A35237A2287CFE3008911D8 /* UIImage+Extension.m in Sources */,
+				5AEF960F2289C59900E6B655 /* CXPlayViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
