@@ -95,7 +95,7 @@ const CGFloat CXBearingPlayerViewlabelW = 50;
             bottom = play_viewSafeArea(self.superview).bottom - 10;
         } else if(play_viewSafeArea(self.superview).top > 0 &&play_viewSafeArea(self.superview).bottom > 0) {
             //竖屏
-            top = play_viewSafeArea(self.superview).top + 10;
+            top = play_viewSafeArea(self.superview).top;
             bottom = play_viewSafeArea(self.superview).bottom;
         }
     } else{
