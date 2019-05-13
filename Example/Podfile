@@ -1,0 +1,13 @@
+use_frameworks!
+
+platform :ios, '8.0'
+
+target 'CXPlayer_Example' do
+  pod 'CXPlayer', :path => '../'
+
+  target 'CXPlayer_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
