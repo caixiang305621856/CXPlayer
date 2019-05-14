@@ -20,6 +20,20 @@ NS_ASSUME_NONNULL_BEGIN
 /** 根据一个view来创建一个 Image */
 + (UIImage*)creatImageWithView:(UIView *)theView;
 
++ (UIImage *)imageWithColors:(NSArray<UIColor *>*)colors
+                        size:(CGSize)size leftToRight:(BOOL)leftToRight;
+
+
+/**
+ 根据bundle去取图片
+
+ @param name 图片名
+ @return 图片
+ */
++ (UIImage *)cx_imageNamedFromMyBundle:(NSString *)name;
+
++ (instancetype)cx_imagePathWithName:(NSString *)imageName bundle:(NSString *)bundle targetClass:(Class)targetClass;
+
 @end
 
 NS_ASSUME_NONNULL_END

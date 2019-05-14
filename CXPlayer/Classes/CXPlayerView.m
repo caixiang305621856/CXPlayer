@@ -109,14 +109,6 @@ static void *VideoPlayer_PlayerItemLoadedTimeRangesContext = &VideoPlayer_Player
     }
 }
 
-/** 跳动中不监听 */
-- (void)startToSeek {
-    self.isSeeking = YES;
-}
-- (void)endSeek {
-    self.isSeeking = NO;
-}
-
 - (void)play {
     self.isPlaying =YES;
     if (self.player.rate == 0.0) {
@@ -350,6 +342,15 @@ static void *VideoPlayer_PlayerItemLoadedTimeRangesContext = &VideoPlayer_Player
             [self.delegate promptPlayerStatusOrError:status PlayVideo:self];
         });
     }
+}
+
+/** 滑动中不监听 */
+- (void)startToSeek {
+    self.isSeeking = YES;
+}
+
+- (void)endSeek {
+    self.isSeeking = NO;
 }
 
 - (void)setupAudioSession {

@@ -9,7 +9,6 @@
 #import "CXPlayerViewController.h"
 #import "CXPlayerView.h"
 #import "CXBearingPlayerView.h"
-#import "CXSlider.h"
 
 @interface CXPlayerViewController ()<CXVideoPlayerDelegate,CXBearingPlayerViewDelegate>
 {
@@ -66,22 +65,10 @@
 }
 
 #pragma mark - public
-/*
- - (void)playWithUrl:(NSString *)url inView:(UIView *)view {
- if (view) {
- self.backgroundView = view;
- [self.view addSubview:self.backgroundView];
- self.originFrame = view.frame;
- self.bearingPlayerView.halfScreenPanGestureEnabled = NO;
- [self.playerView setUrl:[NSURL URLWithString:VideoURL]];
- [self.playerView play];
- }
- }
- */
 
 - (void)playWithUrl:(NSString *)url {
     self.originFrame = self.backgroundView.frame;
-    self.bearingPlayerView.halfScreenPanGestureEnabled = NO;
+    [self bearingPlayerView];
     [self.playerView setUrl:[NSURL URLWithString:url]];
     [self.playerView play];
 }

@@ -7,12 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CXPlayer.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface CXPlayViewController : UIViewController
 
-@property (nonatomic, copy) void(^disMissBlcok)(void);
+@property (nonatomic, copy) dispatch_block_t disMissBlock;
+
+@property (copy, nonatomic) dispatch_block_t shareBlock;
+
+@property (copy, nonatomic) void(^playerStatusBlock)(CXAVPlayerStatus playerStatus);
 
 @end
 

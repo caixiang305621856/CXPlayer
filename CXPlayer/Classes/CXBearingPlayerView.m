@@ -7,8 +7,7 @@
 //
 
 #import "CXBearingPlayerView.h"
-#import "UIImage+Extension.h"
-#import "CXSlider.h"
+#import "UIImage+CXExtension.h"
 #import <MediaPlayer/MediaPlayer.h>
 
 const CGFloat CXBearingPlayerViewTopHeight = 50;
@@ -104,22 +103,28 @@ const CGFloat CXBearingPlayerViewlabelW = 50;
         bottom = 0;
     }
     
+        BOOL deviceOrientationLandscape = ([UIApplication sharedApplication].statusBarOrientation == UIDeviceOrientationLandscapeRight || [UIApplication sharedApplication].statusBarOrientation == UIDeviceOrientationLandscapeLeft);
+    if (deviceOrientationLandscape) {
+        [self.backButton setImage:[UIImage cx_imageNamedFromMyBundle:@"btn_back_lan"] forState:UIControlStateNormal];
+    } else{
+        [self.backButton setImage:[UIImage cx_imageNamedFromMyBundle:@"btn_back_close"] forState:UIControlStateNormal];
+    }
     CGFloat topViewH = _isFullScreen?CXBearingPlayerViewTopHeight + top:CXBearingPlayerViewTopHeight;
     CGFloat bottomViewH = _isFullScreen?CXBearingPlayerViewTopHeight + bottom:CXBearingPlayerViewBottomHeight;
     
     //顶部
     self.topView.frame = CGRectMake(0, 0, _frame.size.width, topViewH);
     self.backButton.frame = CGRectMake(left, top, CXBearingPlayerViewBtnW, CXBearingPlayerViewBtnH);
-    self.titleLabel.frame = CGRectMake(left + CXBearingPlayerViewBtnW, top, _frame.size.width - left - CXBearingPlayerViewBtnW - right - CXBearingPlayerViewBtnW - 10, CXBearingPlayerViewBtnH);
-    self.shareButton.frame = CGRectMake(_frame.size.width - CXBearingPlayerViewBtnW - right - 10, top,CXBearingPlayerViewBtnW, CXBearingPlayerViewBtnH);
+    self.titleLabel.frame = CGRectMake(left + CXBearingPlayerViewBtnW, top, _frame.size.width - left - CXBearingPlayerViewBtnW - right - CXBearingPlayerViewBtnW, CXBearingPlayerViewBtnH);
+    self.shareButton.frame = CGRectMake(_frame.size.width - CXBearingPlayerViewBtnW - right, top,CXBearingPlayerViewBtnW, CXBearingPlayerViewBtnH);
 
     //低部
     self.bottomView.frame = CGRectMake(0, _frame.size.height - CXBearingPlayerViewBottomHeight - bottom, _frame.size.width, bottomViewH);
     self.playButton.frame = CGRectMake(left, 0, CXBearingPlayerViewBtnW, CXBearingPlayerViewBtnH);
     self.currentLabel.frame = CGRectMake(CGRectGetMaxX(self.playButton.frame), 0, CXBearingPlayerViewlabelW, CXBearingPlayerViewBottomHeight);
     self.fullScreenButton.frame = CGRectMake(_frame.size.width - CXBearingPlayerViewBtnW - right, 0, CXBearingPlayerViewBtnW, CXBearingPlayerViewBtnH);
-    self.totalLabel.frame = CGRectMake(_frame.size.width - CXBearingPlayerViewlabelW - CXBearingPlayerViewBtnW - 10 - right, 0, CXBearingPlayerViewlabelW, CXBearingPlayerViewBottomHeight);
-    self.videoSlider.frame = CGRectMake(CGRectGetMaxX(self.currentLabel.frame) + 5, 0, _frame.size.width - CGRectGetMaxX(self.currentLabel.frame) - self.totalLabel.frame.size.width - self.fullScreenButton.frame.size.width - 10 - 5 - right , CXBearingPlayerViewBottomHeight);
+    self.totalLabel.frame = CGRectMake(_frame.size.width - CXBearingPlayerViewlabelW - CXBearingPlayerViewBtnW - right, 0, CXBearingPlayerViewlabelW, CXBearingPlayerViewBottomHeight);
+    self.videoSlider.frame = CGRectMake(CGRectGetMaxX(self.currentLabel.frame) + 5, 0, _frame.size.width - CGRectGetMaxX(self.currentLabel.frame) - self.totalLabel.frame.size.width - self.fullScreenButton.frame.size.width - 10 - right , CXBearingPlayerViewBottomHeight);
 }
 
 - (void)creatUI{
@@ -153,10 +158,6 @@ const CGFloat CXBearingPlayerViewlabelW = 50;
     }
     if (self.fullScreenButton.selected) {//全屏
         self.panGesture.enabled = YES;
-    }else{
-        if (_halfScreenPanGestureEnabled) {
-            self.panGesture.enabled = _isShowControl;
-        }
     }
     [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
         self.topView.alpha = alpha;
@@ -221,14 +222,14 @@ const CGFloat CXBearingPlayerViewlabelW = 50;
             
             if (touPoint.x - _lastPoint.x >= 1) {
                 _lastPoint = touPoint;
-                _fastCurrentTime += 0.5;
+                _fastCurrentTime += 1;
                 if (_fastCurrentTime > self.totalTime) {
                     _fastCurrentTime = self.totalTime;
                 }
             }
             if (touPoint.x - _lastPoint.x <= - 1) {
                 _lastPoint = touPoint;
-                _fastCurrentTime -= 0.5;
+                _fastCurrentTime -= 1;
                 if (_fastCurrentTime < 0) {
                     _fastCurrentTime = 0;
                 }
@@ -321,7 +322,7 @@ const CGFloat CXBearingPlayerViewlabelW = 50;
     _frame = frame;
     [self creatUI];
     _isFullScreen = isFullScreen;
-    if (CGRectEqualToRect(frame, [UIScreen mainScreen].bounds)) {
+    if (CGRectEqualToRect(frame, [UIScreen mainScreen].bounds)) {//也可能是竖屏全屏
         _isFullScreen = YES;
     }
     self.fullScreenButton.selected = isFullScreen;
@@ -377,7 +378,8 @@ const CGFloat CXBearingPlayerViewlabelW = 50;
     if (!_topView) {
         //改渐变view
         _topView = [[UIView alloc] init];
-        _topView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
+        UIImage *image = [UIImage cx_imageNamedFromMyBundle:@"icon_top_bg"];
+        _topView.layer.contents = (id)image.CGImage;
         [self addSubview:_topView];
     }
     return _topView;
@@ -386,7 +388,7 @@ const CGFloat CXBearingPlayerViewlabelW = 50;
 - (UIButton *)backButton{
     if (!_backButton) {
         _backButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_backButton setImage:[UIImage imageNamed:@"back"] forState:UIControlStateNormal];
+        [_backButton setImage:[UIImage cx_imageNamedFromMyBundle:@"btn_back_close"] forState:UIControlStateNormal];
         [_backButton addTarget:self action:@selector(backButtonClick:) forControlEvents:UIControlEventTouchUpInside];
         [self.topView addSubview:_backButton];
     }
@@ -406,7 +408,7 @@ const CGFloat CXBearingPlayerViewlabelW = 50;
 - (UIButton *)shareButton {
     if (!_shareButton) {
         _shareButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_shareButton setTitle:@"分享" forState:UIControlStateNormal];
+        [_shareButton setImage:[UIImage cx_imageNamedFromMyBundle:@"btn_share_white"] forState:UIControlStateNormal];
         [_shareButton.titleLabel setFont:[UIFont systemFontOfSize:16.0f]];
         [_shareButton addTarget:self action:@selector(shareButtonClick:) forControlEvents:UIControlEventTouchUpInside];
         [self.topView addSubview:_shareButton];
@@ -417,7 +419,8 @@ const CGFloat CXBearingPlayerViewlabelW = 50;
     if (!_bottomView) {
         //改渐变view
         _bottomView = [[UIView alloc] init];
-        _bottomView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
+        UIImage *image = [UIImage cx_imageNamedFromMyBundle:@"icon_bottom_bg"];
+        _bottomView.layer.contents = (id)image.CGImage;
         [self addSubview:_bottomView];
     }
     return _bottomView;
@@ -426,8 +429,8 @@ const CGFloat CXBearingPlayerViewlabelW = 50;
 - (UIButton *)playButton{
     if (!_playButton) {
         _playButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_playButton setImage:[UIImage imageNamed:@"video_pause"] forState:UIControlStateNormal];
-        [_playButton setImage:[UIImage imageNamed:@"video_play"] forState:UIControlStateSelected];
+        [_playButton setImage:[UIImage cx_imageNamedFromMyBundle:@"btn_video_pause"] forState:UIControlStateNormal];
+        [_playButton setImage:[UIImage cx_imageNamedFromMyBundle:@"btn_video_play"] forState:UIControlStateSelected];
         [_playButton addTarget:self action:@selector(playButtonClick:) forControlEvents:UIControlEventTouchUpInside];
         [self.bottomView addSubview:_playButton];
     }
@@ -461,8 +464,8 @@ const CGFloat CXBearingPlayerViewlabelW = 50;
 - (UIButton *)fullScreenButton{
     if (!_fullScreenButton) {
         _fullScreenButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_fullScreenButton setImage:[UIImage imageNamed:@"normal_screen"] forState:UIControlStateNormal];
-        [_fullScreenButton setImage:[UIImage imageNamed:@"full_screen"] forState:UIControlStateSelected];
+        [_fullScreenButton setImage:[UIImage cx_imageNamedFromMyBundle:@"btn_normal_screen"] forState:UIControlStateNormal];
+        [_fullScreenButton setImage:[UIImage cx_imageNamedFromMyBundle:@"btn_full_screen"] forState:UIControlStateSelected];
         [_fullScreenButton addTarget:self action:@selector(fullScreenButtonClick:) forControlEvents:UIControlEventTouchUpInside];
         [self.bottomView addSubview:_fullScreenButton];
     }
@@ -528,6 +531,11 @@ const CGFloat CXBearingPlayerViewlabelW = 50;
     self.videoSlider.bufferProgress = progress;
 }
 
+- (void)setTitle:(NSString *)title {
+    _title = title;
+    self.titleLabel.text = title;
+}
+
 //纯UI操作不做任何播放事件处理
 - (void)setPlayerStatus:(CXAVPlayerStatus)playerStatus {
     _playerStatus = playerStatus;
@@ -539,7 +547,6 @@ const CGFloat CXBearingPlayerViewlabelW = 50;
             break;
         case CXAVPlayerStatusPlay:
             [self.activityView stopAnimating];
-            [self startHideControlTimer];
             break;
         case CXAVPlayerStatusPlayEnd:
             [self.activityView stopAnimating];
@@ -563,5 +570,200 @@ const CGFloat CXBearingPlayerViewlabelW = 50;
             break;
     }
 }
+
+@end
+
+@interface CXSlider() {
+    CGRect _frame;
+}
+@property (nonatomic, strong) UIImageView *trackImageView;  //缓冲轨道
+@property (nonatomic, strong) UIImageView *bufferImageView;//缓冲进度
+@property (nonatomic, strong) UIImageView *thumbValueImageView;//滑块进度
+
+@property (nonatomic, strong) UIView *thumb;               //滑块的父视图（不可见）
+@property (nonatomic, strong) UIImageView *thumbImageView; //用于显示滑块的ImageView（可视
+
+@end
+
+@implementation CXSlider
+
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    _frame = self.frame;
+    _thumbTouchSize = _frame.size.height;
+    _thumbVisibleSize = 10;
+    _trackHeight = 2;
+    [self updateFrame];
+}
+
+- (instancetype)initWithFrame:(CGRect)frame {
+    self = [super initWithFrame:frame];
+    if (self) {
+        self.backgroundColor = [UIColor clearColor];
+        self.trackImageView.backgroundColor = [UIColor grayColor];
+        self.bufferImageView.backgroundColor = [UIColor whiteColor];
+        self.thumbValueImageView.backgroundColor = [UIColor redColor];
+        self.thumb.backgroundColor = [UIColor clearColor];
+        self.thumbImageView.backgroundColor = [UIColor whiteColor];
+    }
+    return self;
+}
+
+- (void)updateFrame{
+    self.trackImageView.frame = CGRectMake(0, (_frame.size.height - _trackHeight) * 0.5, _frame.size.width, _trackHeight);
+    self.bufferImageView.frame = CGRectMake(0, (_frame.size.height - _trackHeight) * 0.5, _bufferProgress * _frame.size.width, _trackHeight);
+    
+    self.thumbValueImageView.frame = CGRectMake(0, (_frame.size.height - _trackHeight) * 0.5, _value * _frame.size.width, _trackHeight);
+    self.thumb.frame = CGRectMake(0, 0, _thumbTouchSize, _thumbTouchSize);
+    self.thumb.center = [self getThumbCenterWithValue:_value];
+    self.thumbImageView.frame = CGRectMake((_thumbTouchSize - _thumbVisibleSize) * 0.5, (_thumbTouchSize - _thumbVisibleSize) * 0.5, _thumbVisibleSize, _thumbVisibleSize);
+}
+
+- (CGPoint)getThumbCenterWithValue:(CGFloat)value{
+    CGFloat thumbX = _thumbVisibleSize * 0.5 + (_frame.size.width - _thumbVisibleSize) * value;
+    CGFloat thumbY = _frame.size.height * 0.5;
+    return CGPointMake(thumbX, thumbY);
+}
+
+- (UIImageView *)trackImageView{
+    if (!_trackImageView) {
+        _trackImageView = [[UIImageView alloc] init];
+        _trackImageView.layer.masksToBounds = YES;
+        [self addSubview:_trackImageView];
+    }
+    return _trackImageView;
+}
+
+- (UIImageView *)bufferImageView{
+    if (!_bufferImageView) {
+        _bufferImageView = [[UIImageView alloc] init];
+        _bufferImageView.layer.masksToBounds = YES;
+        [self addSubview:_bufferImageView];
+    }
+    return _bufferImageView;
+}
+
+- (UIImageView *)thumbValueImageView{
+    if (!_thumbValueImageView) {
+        _thumbValueImageView = [[UIImageView alloc] init];
+        _thumbValueImageView.layer.masksToBounds = YES;
+        [self addSubview:_thumbValueImageView];
+    }
+    return _thumbValueImageView;
+}
+
+- (UIView *)thumb{
+    if (!_thumb) {
+        _thumb = [[UIView alloc] init];
+        _thumb.layer.masksToBounds = YES;
+        _thumb.userInteractionEnabled = NO;
+        [self addSubview:_thumb];
+    }
+    return _thumb;
+}
+
+- (UIImageView *)thumbImageView{
+    if (!_thumbImageView) {
+        _thumbImageView = [[UIImageView alloc] init];
+        _thumbImageView.layer.masksToBounds = YES;
+        [self.thumb addSubview:_thumbImageView];
+    }
+    return _thumbImageView;
+}
+
+- (void)setTrackColor:(UIColor *)trackColor{
+    self.trackImageView.backgroundColor = trackColor;
+}
+
+- (void)setBufferColor:(UIColor *)bufferColor{
+    self.bufferImageView.backgroundColor = bufferColor;
+}
+
+- (void)setThumbValueColor:(UIColor *)thumbValueColor{
+    self.thumbImageView.backgroundColor = thumbValueColor;
+}
+
+- (void)setTrackHeight:(CGFloat)trackHeight{
+    _trackHeight = trackHeight;
+    [self setNeedsLayout];
+    [self layoutIfNeeded];
+}
+
+- (void)setThumbVisibleSize:(CGFloat)thumbVisibleSize{
+    _thumbVisibleSize = thumbVisibleSize;
+    [self setNeedsLayout];
+    [self layoutIfNeeded];
+}
+
+- (void)setBufferProgress:(CGFloat)bufferProgress{
+    bufferProgress = [self valid:bufferProgress];
+    if (_bufferProgress == bufferProgress) {
+        return;
+    }
+    _bufferProgress = bufferProgress;
+    self.bufferImageView.frame = CGRectMake(0, (_frame.size.height - _trackHeight) * 0.5, _bufferProgress * _frame.size.width, _trackHeight);
+}
+
+- (void)setValue:(CGFloat)value {
+    value = [self valid:value];
+    if (_value == value) {
+        return;
+    }
+    _value = value;
+    
+    self.thumb.center = [self getThumbCenterWithValue:_value];
+    self.thumbValueImageView.frame = CGRectMake(0, (_frame.size.height - _trackHeight) * 0.5, _value * _frame.size.width, _trackHeight);
+}
+
+- (float)valid:(float)f {
+    if (isnan(f)) {
+        return 0.0;
+    }
+    if (f < 0.005) {
+        return 0.0;
+    }
+    else if (f > 0.995) {
+        f = 1.0;
+    }
+    return f;
+}
+
+- (void)setThumbImage:(UIImage *)thumbImage forState:(UIControlState)state{
+    if (state == UIControlStateNormal) {
+        self.thumbImageView.image = thumbImage;
+        self.thumbImageView.backgroundColor = [UIColor clearColor];
+    }
+    else if (state == UIControlStateHighlighted) {
+        self.thumbImageView.highlightedImage = thumbImage;
+        self.thumbImageView.backgroundColor = [UIColor clearColor];
+    }
+}
+
+- (BOOL)beginTrackingWithTouch:(UITouch *)touch withEvent:(UIEvent *)event {
+    CGPoint location = [touch locationInView:self];
+    if (!CGRectContainsPoint(self.thumb.frame, location)) {
+        return NO;
+    }
+    self.thumbImageView.highlighted = YES;
+    [self sendActionsForControlEvents:UIControlEventEditingDidBegin];
+    return YES;
+}
+
+- (BOOL)continueTrackingWithTouch:(UITouch *)touch withEvent:(UIEvent *)event {
+    CGPoint location = [touch locationInView:self];
+    
+    if (location.x <= CGRectGetWidth(self.bounds) + 10 && location.x >= - 10) {
+        self.thumbImageView.highlighted = YES;
+        self.value = location.x / CGRectGetWidth(self.bounds);
+        [self sendActionsForControlEvents:UIControlEventValueChanged];
+    }
+    return YES;
+}
+
+- (void)endTrackingWithTouch:(UITouch *)touch withEvent:(UIEvent *)event {
+    self.thumbImageView.highlighted = NO;
+    [self sendActionsForControlEvents:UIControlEventEditingDidEnd];
+}
+
 
 @end

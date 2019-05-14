@@ -8,32 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <AVFoundation/AVFoundation.h>
-/**
- CXAVPlayerStatus
-
- - CXAVPlayerStatusReadyToPlay: 准备好播放
- - CXAVPlayerStatusLoadingVideo: 加载视频
- - CXAVPlayerStatusPlay: 正在播放
- - CXAVPlayerStatusPlayEnd: 播放结束
- - CXAVPlayerStatusCacheData: 缓冲视频
- - CXAVPlayerStatusCacheEnd: 缓冲结束
- - CXAVPlayerStatusItemFailed: 视频资源问题
- - CXAVPlayerStatusEnterBack: 进入后台
- - CXAVPlayerStatusResignActive: 即将进入后台
- - CXAVPlayerStatusBecomeActive: 从后台返回
- */
-typedef NS_ENUM(NSInteger, CXAVPlayerStatus) {
-    CXAVPlayerStatusReadyToPlay = 0,
-    CXAVPlayerStatusLoadingVideo,
-    CXAVPlayerStatusPlay,
-    CXAVPlayerStatusPlayEnd,
-    CXAVPlayerStatusCacheData,
-    CXAVPlayerStatusCacheEnd,
-    CXAVPlayerStatusItemFailed,
-    CXAVPlayerStatusEnterBack,
-    CXAVPlayerStatusResignActive,
-    CXAVPlayerStatusBecomeActive
-};
+#import "CXPlayer.h"
 
 @class CXPlayerView;
 
@@ -44,7 +19,7 @@ typedef NS_ENUM(NSInteger, CXAVPlayerStatus) {
 /**
  播放器状态
 
- @param status z状态
+ @param status 状态
  @param playerView self
  */
 - (void)promptPlayerStatusOrError:(CXAVPlayerStatus)status PlayVideo:(CXPlayerView *)playerView;

@@ -31,7 +31,7 @@
 */
     
     CXPlayViewController *playViewController = [CXPlayViewController new];
-    playViewController.disMissBlcok = ^{
+    playViewController.disMissBlock = ^{
         [self dismissViewControllerAnimated:YES completion:nil];
     };
     UINavigationController *na = [[UINavigationController alloc] initWithRootViewController:playViewController];

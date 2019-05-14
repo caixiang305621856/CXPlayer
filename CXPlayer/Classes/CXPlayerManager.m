@@ -7,13 +7,14 @@
 //
 
 #import "CXPlayerManager.h"
-#import "CXPlayerView.h"
 #import "CXBearingPlayerView.h"
-#import "CXSlider.h"
+#import "CXPlayerView.h"
 
 @interface CXPlayerManager ()<CXVideoPlayerDelegate,CXBearingPlayerViewDelegate>
 {
     NSTimeInterval _seekToTime;
+    //手动暂停
+    BOOL _isManualpPause;
 }
 
 @property (nonatomic, strong) UIView *backgroundView;
@@ -48,34 +49,16 @@
     return self;
 }
 
-/*
-- (void)viewWillLayoutSubviews {
-    [super viewWillLayoutSubviews];
-    self.playerView.frame = self.bearingPlayerView.bounds;
-    if (CGRectEqualToRect(self.bearingPlayerView.bounds, [UIScreen mainScreen].bounds)) {
-        self.playerView.frame = CGRectMake(play_viewSafeArea(self.view).left, 0, self.bearingPlayerView.bounds.size.width - play_viewSafeArea(self.view).left - play_viewSafeArea(self.view).right, self.bearingPlayerView.bounds.size.height);
-    }
-}
- */
-
-
 #pragma mark - public
  - (void)playWithUrl:(NSString *)url inView:(UIView *)view {
      if (view) {
      self.backgroundView = view;
      self.originFrame = view.frame;
-     self.bearingPlayerView.halfScreenPanGestureEnabled = NO;
+     [self bearingPlayerView];
      [self.playerView setUrl:[NSURL URLWithString:url]];
      [self.playerView play];
      }
  }
-
-- (void)playWithUrl:(NSString *)url {
-    self.originFrame = self.backgroundView.frame;
-    self.bearingPlayerView.halfScreenPanGestureEnabled = NO;
-    [self.playerView setUrl:[NSURL URLWithString:url]];
-    [self.playerView play];
-}
 
 - (void)play {
     [self.playerView play];
@@ -112,6 +95,7 @@
 #pragma mark - CXVideoPlayerDelegate
 - (void)promptPlayerStatusOrError:(CXAVPlayerStatus)status PlayVideo:(CXPlayerView *)playerView {
     self.bearingPlayerView.playerStatus = status;
+    !self.playerStatusBlock?:self.playerStatusBlock(status);
     switch (status) {
         case CXAVPlayerStatusLoadingVideo:
             NSLog(@"开始准备");
@@ -150,11 +134,15 @@
             break;
         case CXAVPlayerStatusResignActive:
             NSLog(@"即将进入后台");
-            [self pause];
+            if (!_isManualpPause) {
+                [self pause];
+            }
             break;
         case CXAVPlayerStatusBecomeActive:
             NSLog(@"进入前台");
-            [self play];
+            if (!_isManualpPause) {
+                [self play];
+            }
             break;
     }
 }
@@ -184,12 +172,12 @@
         [self setDeviceRotate];
     }else{//竖屏状态下，点击返回按钮
         [self.playerView stop];
-        !self.disMissBlcok?:self.disMissBlcok();
+        !self.disMissBlock?:self.disMissBlock();
     }
 }
 
 - (void)shareClick:(CXBearingPlayerView *)bearingPlayerView {
-    NSLog(@"分享");
+    !self.shareBlock?:self.shareBlock();
 }
 
 - (void)fullScreenBtnClick:(CXBearingPlayerView *)bearingPlayerView {
@@ -198,12 +186,13 @@
 }
 
 - (void)videoPlay:(CXBearingPlayerView*)bearingPlayerView didPlayBtnIsPause:(BOOL)isPause {
+    //手动点击
     if (isPause) {
-        [self.playerView pause];
-        [self.bearingPlayerView pause];
+        _isManualpPause = YES;
+        [self pause];
     }else{
-        [self.playerView play];
-        [self.bearingPlayerView play];
+        _isManualpPause = NO;
+        [self play];
     }
 }
 
@@ -235,8 +224,11 @@
     }
     self.backgroundView.frame = frame;
     [self.bearingPlayerView fullScreenChanged:_isFullScreen frame:self.backgroundView.bounds];
+    
     //全屏横屏模式适配iPhonex系列
-    if (CGRectEqualToRect(self.bearingPlayerView.bounds, [UIScreen mainScreen].bounds)) {
+    BOOL deviceOrientationLandscape = ([UIApplication sharedApplication].statusBarOrientation == UIDeviceOrientationLandscapeRight || [UIApplication sharedApplication].statusBarOrientation == UIDeviceOrientationLandscapeLeft);
+
+    if (CGRectEqualToRect(self.bearingPlayerView.bounds, [UIScreen mainScreen].bounds) &&deviceOrientationLandscape) {
         self.playerView.frame = CGRectMake(play_viewSafeArea(self.bearingPlayerView).left, 0, self.bearingPlayerView.bounds.size.width - play_viewSafeArea(self.bearingPlayerView).left - play_viewSafeArea(self.bearingPlayerView).right, self.bearingPlayerView.bounds.size.height);
     } else {
         self.playerView.frame = self.backgroundView.bounds;
@@ -274,6 +266,12 @@
         _backgroundView = [[UIView  alloc] initWithFrame:[UIScreen mainScreen].bounds];
     }
     return _backgroundView;
+}
+
+#pragma mark - set&get
+- (void)setTitle:(NSString *)title {
+    _title = title;
+    self.bearingPlayerView.title = title;
 }
 
 @end
