@@ -5,9 +5,8 @@
 [![License](https://img.shields.io/cocoapods/l/CXPlayer.svg?style=flat)](https://cocoapods.org/pods/CXPlayer)
 [![Platform](https://img.shields.io/cocoapods/p/CXPlayer.svg?style=flat)](https://cocoapods.org/pods/CXPlayer)
 
-## 使用说明
-[](https://upload-images.jianshu.io/upload_images/1767433-84de6ae8799a6999.gif?imageMogr2/auto-orient/)
-strip
+![效果](https://upload-images.jianshu.io/upload_images/1767433-84de6ae8799a6999.gif?imageMogr2/auto-orient/)
+
 ```obj
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -30,8 +29,6 @@ strip
 }
 ```
 
-
-## Requirements
 
 ## Installation
 
