@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "CXPlayer.h"
-@class CXPlayerView;
+@class CXPlayerView,CXBearingPlayerView;
 NS_ASSUME_NONNULL_BEGIN
 
 @interface CXPlayerManager : NSObject
@@ -17,6 +17,12 @@ NS_ASSUME_NONNULL_BEGIN
  播放器view
  */
 @property (nonatomic,strong,readonly)CXPlayerView *playerView;
+
+/**
+ 承载视频播放界面的View
+ */
+@property (nonatomic, strong,readonly) CXBearingPlayerView *bearingPlayerView;
+
 /**
  返回
  */

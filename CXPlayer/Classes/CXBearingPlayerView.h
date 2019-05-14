@@ -46,6 +46,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface CXBearingPlayerView : UIView
 
+/**
+ 是否支持分享
+ */
+@property (assign, nonatomic) BOOL supportShare;
+
+/**
+ 滑块正在拖拽
+ */
 @property (nonatomic, assign,readonly)BOOL sliderIsTouching;
 /**
  当前播放时间

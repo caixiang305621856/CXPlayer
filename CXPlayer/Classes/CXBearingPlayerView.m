@@ -62,6 +62,7 @@ const CGFloat CXBearingPlayerViewlabelW = 50;
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
+        self.supportShare = YES;
         _frame = frame;
         if (CGRectEqualToRect(frame, [UIScreen mainScreen].bounds)) {
             _isFullScreen = YES;
@@ -569,6 +570,11 @@ const CGFloat CXBearingPlayerViewlabelW = 50;
         case CXAVPlayerStatusBecomeActive:
             break;
     }
+}
+
+- (void)setSupportShare:(BOOL)supportShare {
+    _supportShare = supportShare;
+    self.shareButton.hidden = !supportShare;
 }
 
 @end
