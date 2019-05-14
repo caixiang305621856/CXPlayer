@@ -27,14 +27,14 @@
 - (void)fullScreenBtnClick:(CXBearingPlayerView *)bearingPlayerView;
 /**
  按钮点击
-
+ 
  @param bearingPlayerView self
  @param isPause 暂停/播放
  */
 - (void)videoPlay:(CXBearingPlayerView*)bearingPlayerView didPlayBtnIsPause:(BOOL)isPause;
 /**
  滑动到指定位置播放视频
-
+ 
  @param time 指定时长位置
  @param bearingPlayerView self
  */

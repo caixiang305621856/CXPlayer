@@ -15,9 +15,20 @@ Install _fastlane_ using
 or alternatively using `brew cask install fastlane`
 
 # Available Actions
-### CXLib
+## iOS
+### ios send_email
 ```
-fastlane CXLib
+fastlane ios send_email
+```
+Lane compilations
+### ios cxremove_tag
+```
+fastlane ios cxremove_tag
+```
+
+### ios CXLib
+```
+fastlane ios CXLib
 ```
 CXLib 针对私有库快速升级维护
 

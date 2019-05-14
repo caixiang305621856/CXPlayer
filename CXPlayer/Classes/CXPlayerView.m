@@ -37,7 +37,7 @@ static void *VideoPlayer_PlayerItemLoadedTimeRangesContext = &VideoPlayer_Player
 @implementation CXPlayerView
 
 - (void)dealloc {
-//    NSLog(@"🔥CXPlayerView销毁了🔥");
+    //    NSLog(@"🔥CXPlayerView销毁了🔥");
     [self resetPlayerItemIfNecessary];
 }
 
@@ -95,11 +95,11 @@ static void *VideoPlayer_PlayerItemLoadedTimeRangesContext = &VideoPlayer_Player
             return;
         }
         /*
-        __weak typeof(self)weakSelf = self;
-        [self.player seekToTime:cmTime completionHandler:^(BOOL finished) {
-            __strong typeof (weakSelf) strongSelf = weakSelf;
-            [strongSelf play];
-        }];
+         __weak typeof(self)weakSelf = self;
+         [self.player seekToTime:cmTime completionHandler:^(BOOL finished) {
+         __strong typeof (weakSelf) strongSelf = weakSelf;
+         [strongSelf play];
+         }];
          */
         __weak typeof(self)weakSelf = self;
         [self.player seekToTime:cmTime toleranceBefore:CMTimeMake(1,1)  toleranceAfter:CMTimeMake(1,1) completionHandler:^(BOOL finished) {
@@ -254,7 +254,7 @@ static void *VideoPlayer_PlayerItemLoadedTimeRangesContext = &VideoPlayer_Player
             CMTime duration = self.player.currentItem.duration;
             CGFloat totalDuration = CMTimeGetSeconds(duration);
             CGFloat progress = loadedDuration / totalDuration;
-
+            
             if ([self.delegate respondsToSelector:@selector(videoPlayer:loadedTimeRangeDidChange:)]) {
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [self.delegate videoPlayer:self loadedTimeRangeDidChange:progress];
@@ -280,7 +280,7 @@ static void *VideoPlayer_PlayerItemLoadedTimeRangesContext = &VideoPlayer_Player
 }
 
 - (void)videoPlayWillResignActive:(NSNotification *)notic {
-    [self setDelegateStatus:CXAVPlayerStatusResignActive];    
+    [self setDelegateStatus:CXAVPlayerStatusResignActive];
 }
 
 - (void)videoPlayBecomeActive:(NSNotification *)notic {
@@ -333,7 +333,7 @@ static void *VideoPlayer_PlayerItemLoadedTimeRangesContext = &VideoPlayer_Player
 
 /**
  不需要 AVPlayerStatusReadyToPlay 的条件
-
+ 
  @param status 状态
  */
 - (void)setDelegateStatusOutCanPlay:(CXAVPlayerStatus)status {
@@ -432,11 +432,11 @@ static void *VideoPlayer_PlayerItemLoadedTimeRangesContext = &VideoPlayer_Player
                     context:VideoPlayer_PlayerItemLoadedTimeRangesContext];
     
     NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
-
+    
     //播放完毕的通知
     [center addObserver:self selector:@selector(playerItemDidPlayToEndTime:)
-                                                 name:AVPlayerItemDidPlayToEndTimeNotification
-                                               object:nil];
+                   name:AVPlayerItemDidPlayToEndTimeNotification
+                 object:nil];
     //耳机插入和拔掉通知
     [center addObserver:self selector:@selector(audioRouteChangeListenerCallback:)
                    name:AVAudioSessionRouteChangeNotification
@@ -503,15 +503,15 @@ static void *VideoPlayer_PlayerItemLoadedTimeRangesContext = &VideoPlayer_Player
     if (!self.timeObserverToken) {
         return;
     }
-//    if (!self.playingTimeObserverToken) {
-//        return;
-//    }
+    //    if (!self.playingTimeObserverToken) {
+    //        return;
+    //    }
     if (self.player) {
         [self.player removeTimeObserver:self.timeObserverToken];
-//        [self.player removeTimeObserver:self.playingTimeObserverToken];
+        //        [self.player removeTimeObserver:self.playingTimeObserverToken];
     }
     self.timeObserverToken = nil;
-//    self.playingTimeObserverToken = nil;
+    //    self.playingTimeObserverToken = nil;
 }
 
 //释放

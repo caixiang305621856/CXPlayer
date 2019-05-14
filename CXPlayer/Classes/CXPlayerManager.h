@@ -8,11 +8,15 @@
 
 #import <Foundation/Foundation.h>
 #import "CXPlayer.h"
-
+@class CXPlayerView;
 NS_ASSUME_NONNULL_BEGIN
 
 @interface CXPlayerManager : NSObject
 
+/**
+ 播放器view
+ */
+@property (nonatomic,strong,readonly)CXPlayerView *playerView;
 /**
  返回
  */
@@ -24,18 +28,19 @@ NS_ASSUME_NONNULL_BEGIN
 @property (copy, nonatomic) dispatch_block_t shareBlock;
 
 /**
- 播放状态的回调
+ 播放器状态的回调
  */
 @property (copy, nonatomic) void(^playerStatusBlock)(CXAVPlayerStatus playerStatus);
 
+@property (copy, nonatomic) void(^playOrPauseBlock)(BOOL isPlaying);
 /**
  标题
  */
 @property (copy, nonatomic) NSString *title;
 /**
  传递外界的Url view
-
- @param url
+ 
+ @param url url
  @param view 放播放的view
  */
 - (void)playWithUrl:(NSString *)url inView:(UIView *)view;

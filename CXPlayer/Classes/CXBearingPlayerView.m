@@ -103,7 +103,7 @@ const CGFloat CXBearingPlayerViewlabelW = 50;
         bottom = 0;
     }
     
-        BOOL deviceOrientationLandscape = ([UIApplication sharedApplication].statusBarOrientation == UIDeviceOrientationLandscapeRight || [UIApplication sharedApplication].statusBarOrientation == UIDeviceOrientationLandscapeLeft);
+    BOOL deviceOrientationLandscape = ([UIApplication sharedApplication].statusBarOrientation == UIDeviceOrientationLandscapeRight || [UIApplication sharedApplication].statusBarOrientation == UIDeviceOrientationLandscapeLeft);
     if (deviceOrientationLandscape) {
         [self.backButton setImage:[UIImage cx_imageNamedFromMyBundle:@"btn_back_lan"] forState:UIControlStateNormal];
     } else{
@@ -117,7 +117,7 @@ const CGFloat CXBearingPlayerViewlabelW = 50;
     self.backButton.frame = CGRectMake(left, top, CXBearingPlayerViewBtnW, CXBearingPlayerViewBtnH);
     self.titleLabel.frame = CGRectMake(left + CXBearingPlayerViewBtnW, top, _frame.size.width - left - CXBearingPlayerViewBtnW - right - CXBearingPlayerViewBtnW, CXBearingPlayerViewBtnH);
     self.shareButton.frame = CGRectMake(_frame.size.width - CXBearingPlayerViewBtnW - right, top,CXBearingPlayerViewBtnW, CXBearingPlayerViewBtnH);
-
+    
     //低部
     self.bottomView.frame = CGRectMake(0, _frame.size.height - CXBearingPlayerViewBottomHeight - bottom, _frame.size.width, bottomViewH);
     self.playButton.frame = CGRectMake(left, 0, CXBearingPlayerViewBtnW, CXBearingPlayerViewBtnH);
@@ -238,7 +238,7 @@ const CGFloat CXBearingPlayerViewlabelW = 50;
             NSString *currentTimeString = [self timeFormatted:(int)_fastCurrentTime];
             NSString *totalTimeString = [self timeFormatted:(int)self.totalTime];
             self.fastTimeLabel.text = [NSString stringWithFormat:@"%@/%@",currentTimeString,totalTimeString];
-//            self.videoSlider.value = _fastCurrentTime/self.totalTime*1.0f;
+            //            self.videoSlider.value = _fastCurrentTime/self.totalTime*1.0f;
         }else{//音量
             if (touPoint.y - _lastPoint.y >= 5) {
                 _lastPoint = touPoint;
@@ -252,11 +252,11 @@ const CGFloat CXBearingPlayerViewlabelW = 50;
         
     }else if (panGestureTouch.state == UIGestureRecognizerStateEnded){
         self.fastTimeLabel.hidden = YES;
-         if (changeXorY == 0) {
-             if (_delegate && [_delegate respondsToSelector:@selector(seekToTime:bearingPlayerView:)]) {
-                 [_delegate seekToTime:_fastCurrentTime bearingPlayerView:self];
-             }
-         }
+        if (changeXorY == 0) {
+            if (_delegate && [_delegate respondsToSelector:@selector(seekToTime:bearingPlayerView:)]) {
+                [_delegate seekToTime:_fastCurrentTime bearingPlayerView:self];
+            }
+        }
         [self startHideControlTimer];
     }
 }
@@ -475,12 +475,12 @@ const CGFloat CXBearingPlayerViewlabelW = 50;
 -(CXSlider *)videoSlider {
     if (!_videoSlider) {
         _videoSlider = [[CXSlider alloc] init];
-
+        
         UIView *highlightView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 16, 16)];
         highlightView.layer.cornerRadius = 8;
         highlightView.backgroundColor = [UIColor whiteColor];
         UIImage *highlightImage = [UIImage creatImageWithView:highlightView];
-
+        
         [_videoSlider setThumbImage:highlightImage forState:UIControlStateNormal];
         [_videoSlider setThumbImage:highlightImage forState:UIControlStateHighlighted];
         

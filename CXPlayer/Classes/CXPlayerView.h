@@ -18,7 +18,7 @@
 
 /**
  播放器状态
-
+ 
  @param status 状态
  @param playerView self
  */
@@ -26,7 +26,7 @@
 
 /**
  刷新数据
-
+ 
  @param totalTime 总时长
  @param currentTime 当前时长
  @param loadTime 加载进度时长
@@ -36,7 +36,7 @@
           loadRange:(NSTimeInterval)loadTime;
 /**
  当前缓冲的时长
-
+ 
  @param playerView
  @param duration
  */
@@ -75,7 +75,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) NSTimeInterval totalTime;
 /**
  设置播放的Url
-
+ 
  @param url
  */
 - (void)setUrl:(NSURL *)url;
@@ -84,7 +84,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  定位到多少秒后播放视频
-
+ 
  @param time
  */
 - (void)seekToTime:(CGFloat )time;
@@ -106,35 +106,35 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  播放|暂停
-
+ 
  @param block 播放状态的回调
  */
 - (void)playOrPause:(void (^)(BOOL isPlay))block;
 
 /**
  设置播放倍速 0.5-2.0
-
+ 
  @param rate 播放倍速
  */
 - (void)setPlayerRate:(CGFloat )rate;
 
 /**
  获取当前播放时间
-
+ 
  @return 当前播放时间
  */
 - (CGFloat )getCurrentPlayTime;
 
 /**
  获取视频的总时间长
-
+ 
  @return 视频的总时间长
  */
 - (CGFloat)getTotalPlayTime;
 
 /**
  获取视频宽高比
-
+ 
  @param Url
  @return 视频宽高比
  */
@@ -142,7 +142,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  获取网络视频的缩略图
-
+ 
  @param Url
  @param videoTime
  @return 网络视频的缩略图
@@ -151,7 +151,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  获取本地视频缩略图
-
+ 
  @param videoPath
  @param videoTime
  @return 本地视频缩略图

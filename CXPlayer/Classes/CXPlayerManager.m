@@ -7,8 +7,6 @@
 //
 
 #import "CXPlayerManager.h"
-#import "CXBearingPlayerView.h"
-#import "CXPlayerView.h"
 
 @interface CXPlayerManager ()<CXVideoPlayerDelegate,CXBearingPlayerViewDelegate>
 {
@@ -50,24 +48,26 @@
 }
 
 #pragma mark - public
- - (void)playWithUrl:(NSString *)url inView:(UIView *)view {
-     if (view) {
-     self.backgroundView = view;
-     self.originFrame = view.frame;
-     [self bearingPlayerView];
-     [self.playerView setUrl:[NSURL URLWithString:url]];
-     [self.playerView play];
-     }
- }
+- (void)playWithUrl:(NSString *)url inView:(UIView *)view {
+    if (view) {
+        self.backgroundView = view;
+        self.originFrame = view.frame;
+        [self bearingPlayerView];
+        [self.playerView setUrl:[NSURL URLWithString:url]];
+        [self.playerView play];
+    }
+}
 
 - (void)play {
     [self.playerView play];
     [self.bearingPlayerView play];
+    !self.playOrPauseBlock?:self.playerStatusBlock(YES);
 }
 
 - (void)pause {
     [self.playerView pause];
     [self.bearingPlayerView pause];
+    !self.playOrPauseBlock?:self.playerStatusBlock(NO);
 }
 
 - (void)stop {
@@ -227,7 +227,7 @@
     
     //全屏横屏模式适配iPhonex系列
     BOOL deviceOrientationLandscape = ([UIApplication sharedApplication].statusBarOrientation == UIDeviceOrientationLandscapeRight || [UIApplication sharedApplication].statusBarOrientation == UIDeviceOrientationLandscapeLeft);
-
+    
     if (CGRectEqualToRect(self.bearingPlayerView.bounds, [UIScreen mainScreen].bounds) &&deviceOrientationLandscape) {
         self.playerView.frame = CGRectMake(play_viewSafeArea(self.bearingPlayerView).left, 0, self.bearingPlayerView.bounds.size.width - play_viewSafeArea(self.bearingPlayerView).left - play_viewSafeArea(self.bearingPlayerView).right, self.bearingPlayerView.bounds.size.height);
     } else {
