@@ -56,13 +56,12 @@ const CGFloat CXBearingPlayerViewlabelW = 50;
 @implementation CXBearingPlayerView
 
 - (void)dealloc {
-//    NSLog(@"🔥CXBearingPlayerView销毁了🔥");
+    //    NSLog(@"🔥CXBearingPlayerView销毁了🔥");
 }
 
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
-        self.supportShare = YES;
         _frame = frame;
         if (CGRectEqualToRect(frame, [UIScreen mainScreen].bounds)) {
             _isFullScreen = YES;
@@ -412,6 +411,7 @@ const CGFloat CXBearingPlayerViewlabelW = 50;
         [_shareButton setImage:[UIImage cx_imageNamedFromMyBundle:@"btn_share_white"] forState:UIControlStateNormal];
         [_shareButton.titleLabel setFont:[UIFont systemFontOfSize:16.0f]];
         [_shareButton addTarget:self action:@selector(shareButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+        _shareButton.hidden = NO;
         [self.topView addSubview:_shareButton];
     }
     return _shareButton;
