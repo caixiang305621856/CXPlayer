@@ -48,8 +48,9 @@ NS_ASSUME_NONNULL_BEGIN
  
  @param url url
  @param view 放播放的view
+  @param loc 是否是本地资源
  */
-- (void)playWithUrl:(NSString *)url inView:(UIView *)view;
+- (void)playWithUrl:(NSString *)url inView:(UIView *)view loc:(BOOL)loc;
 
 /**
  播放

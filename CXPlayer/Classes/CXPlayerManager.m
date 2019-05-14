@@ -48,12 +48,16 @@
 }
 
 #pragma mark - public
-- (void)playWithUrl:(NSString *)url inView:(UIView *)view {
+- (void)playWithUrl:(NSString *)url inView:(UIView *)view loc:(BOOL)loc{
     if (view) {
         self.backgroundView = view;
         self.originFrame = view.frame;
         [self bearingPlayerView];
-        [self.playerView setUrl:[NSURL URLWithString:url]];
+        if (loc) {
+            [self.playerView setUrl:[NSURL fileURLWithPath:url]];
+        } else{
+            [self.playerView setUrl:[NSURL URLWithString:url]];
+        }
         [self.playerView play];
     }
 }

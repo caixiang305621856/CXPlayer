@@ -31,7 +31,7 @@
         _playerManager.shareBlock = self.shareBlock;
         _playerManager.playerStatusBlock = self.playerStatusBlock;
         [_playerManager seekToTimePlay:13];
-        [_playerManager playWithUrl:@"http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4" inView:self.videoPlayBGView];
+        [_playerManager playWithUrl:@"http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4" inView:self.videoPlayBGView loc:NO];
     });
 }
 
