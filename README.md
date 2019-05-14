@@ -5,9 +5,31 @@
 [![License](https://img.shields.io/cocoapods/l/CXPlayer.svg?style=flat)](https://cocoapods.org/pods/CXPlayer)
 [![Platform](https://img.shields.io/cocoapods/p/CXPlayer.svg?style=flat)](https://cocoapods.org/pods/CXPlayer)
 
-## Example
+## 使用说明
+[](https://upload-images.jianshu.io/upload_images/1767433-84de6ae8799a6999.gif?imageMogr2/auto-orient/)
+strip
+```obj
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    self.view.backgroundColor = [UIColor whiteColor];
+    UIView *showPlayerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+    showPlayerView.backgroundColor = [UIColor blackColor];
+    [self.view addSubview:showPlayerView];
+    [self.playerManager playWithUrl:@"http://vfx.mtime.cn/Video/2019/05/07/mp4/190507094456874251.mp4" inView:showPlayerView];
+    [self.playerManager seekToTimePlay:14];
+}
 
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
+- (CXPlayerManager *)playerManager {
+    if (!_playerManager) {
+        _playerManager = [[CXPlayerManager alloc] init];
+        _playerManager.disMissBlock = self.disMissBlock;
+        _playerManager.shareBlock = self.shareBlock;
+        _playerManager.playerStatusBlock = self.playerStatusBlock;
+    }
+    return _playerManager;
+}
+```
+
 
 ## Requirements
 
