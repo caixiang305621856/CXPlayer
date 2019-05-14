@@ -16,6 +16,18 @@
 @end
 
 @implementation CXPlayViewController
+
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    self.view.backgroundColor = [UIColor whiteColor];
+    UIView *showPlayerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+    showPlayerView.backgroundColor = [UIColor blackColor];
+    [self.view addSubview:showPlayerView];
+    [self.playerManager playWithUrl:@"http://vfx.mtime.cn/Video/2019/05/07/mp4/190507094456874251.mp4" inView:showPlayerView];
+    [self.playerManager seekToTimePlay:14];
+}
+
 - (CXPlayerManager *)playerManager {
     if (!_playerManager) {
         _playerManager = [[CXPlayerManager alloc] init];
@@ -24,17 +36,6 @@
         _playerManager.playerStatusBlock = self.playerStatusBlock;
     }
     return _playerManager;
-}
-//http://vfx.mtime.cn/Video/2019/05/07/mp4/190507094456874251.mp4
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    self.view.backgroundColor = [UIColor whiteColor];
-    UIView *showPlayerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
-    showPlayerView.backgroundColor = [UIColor blackColor];
-    [self.view addSubview:showPlayerView];
-    [self.playerManager playWithUrl:@"http://vfx.mtime.cn/Video/2019/05/07/mp4/190507082828616353.mp4" inView:showPlayerView];
-    [self.playerManager seekToTimePlay:0];
-
 }
 
 - (void)viewWillAppear:(BOOL)animated {
