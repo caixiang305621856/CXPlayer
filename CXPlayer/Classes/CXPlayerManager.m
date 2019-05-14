@@ -48,15 +48,16 @@
 }
 
 #pragma mark - public
-- (void)playWithUrl:(NSString *)url inView:(UIView *)view loc:(BOOL)loc{
+- (void)playWithUrl:(NSString *)url inView:(UIView *)view{
     if (view) {
         self.backgroundView = view;
         self.originFrame = view.frame;
         [self bearingPlayerView];
-        if (loc) {
-            [self.playerView setUrl:[NSURL fileURLWithPath:url]];
+        if ([self isUrlAddress:url]) {
+            NSString * encodingString = [url stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+            [self.playerView setUrl:[NSURL URLWithString:encodingString]];
         } else{
-            [self.playerView setUrl:[NSURL URLWithString:url]];
+            [self.playerView setUrl:[NSURL fileURLWithPath:url]];
         }
         [self.playerView play];
     }
@@ -206,6 +207,12 @@
 }
 
 #pragma mark - private
+- (BOOL)isUrlAddress:(NSString*)url{
+    NSString*reg =@"((http[s]{0,1}|ftp)://[a-zA-Z0-9\\.\\-]+\\.([a-zA-Z]{2,4})(:\\d+)?(/[a-zA-Z0-9\\.\\-~!@#$%^&*+?:_/=<>]*)?)|(www.[a-zA-Z0-9\\.\\-]+\\.([a-zA-Z]{2,4})(:\\d+)?(/[a-zA-Z0-9\\.\\-~!@#$%^&*+?:_/=<>]*)?)";
+    NSPredicate*urlPredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", reg];
+    return[urlPredicate evaluateWithObject:url];
+}
+
 - (void)setDeviceRotate{
     UIDeviceOrientation orientation;
     if (_isFullScreen) {

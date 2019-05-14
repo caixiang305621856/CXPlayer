@@ -12,7 +12,6 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface CXPlayerManager : NSObject
-
 /**
  播放器view
  */
@@ -38,19 +37,23 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (copy, nonatomic) void(^playerStatusBlock)(CXAVPlayerStatus playerStatus);
 
+/**
+ 手动播放/暂停的回调
+ */
 @property (copy, nonatomic) void(^playOrPauseBlock)(BOOL isPlaying);
+
 /**
  标题
  */
 @property (copy, nonatomic) NSString *title;
+
 /**
  传递外界的Url view
  
  @param url url
  @param view 放播放的view
-  @param loc 是否是本地资源
  */
-- (void)playWithUrl:(NSString *)url inView:(UIView *)view loc:(BOOL)loc;
+- (void)playWithUrl:(NSString *)url inView:(UIView *)view;
 
 /**
  播放

@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface CXPlayerViewController : UIViewController
+@interface CXTestPlayerViewController : UIViewController
 
 @property (nonatomic, copy) void(^disMissBlcok)(void);
 

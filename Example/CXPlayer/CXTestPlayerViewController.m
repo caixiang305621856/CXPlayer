@@ -6,11 +6,11 @@
 //  Copyright © 2019年 caixiang305621856. All rights reserved.
 //
 
-#import "CXPlayerViewController.h"
+#import "CXTestPlayerViewController.h"
 #import "CXPlayerView.h"
 #import "CXBearingPlayerView.h"
 
-@interface CXPlayerViewController ()<CXVideoPlayerDelegate,CXBearingPlayerViewDelegate>
+@interface CXTestPlayerViewController ()<CXVideoPlayerDelegate,CXBearingPlayerViewDelegate>
 {
     NSTimeInterval _seekToTime;
 }
@@ -34,7 +34,7 @@
 
 @end
 
-@implementation CXPlayerViewController
+@implementation CXTestPlayerViewController
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }

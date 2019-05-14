@@ -7,12 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5A35236F22874211008911D8 /* CXPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A35236E22874211008911D8 /* CXPlayerViewController.m */; };
-		5AAC90AC228A937200968423 /* CXPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AAC90A4228A937200968423 /* CXPlayerView.m */; };
-		5AAC90AD228A937200968423 /* CXBearingPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AAC90A8228A937200968423 /* CXBearingPlayerView.m */; };
-		5AAC90AE228A937200968423 /* CXPlayerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AAC90A9228A937200968423 /* CXPlayerManager.m */; };
-		5AAC90AF228A937200968423 /* UIImage+CXExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AAC90AA228A937200968423 /* UIImage+CXExtension.m */; };
+		5A35236F22874211008911D8 /* CXTestPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A35236E22874211008911D8 /* CXTestPlayerViewController.m */; };
 		5AEF960F2289C59900E6B655 /* CXPlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AEF96052289C59900E6B655 /* CXPlayViewController.m */; };
+		5AEF961E228AF60600E6B655 /* CXPlayerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AEF9617228AF60600E6B655 /* CXPlayerManager.m */; };
+		5AEF961F228AF60600E6B655 /* UIImage+CXExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AEF9618228AF60600E6B655 /* UIImage+CXExtension.m */; };
+		5AEF9620228AF60600E6B655 /* CXBearingPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AEF961B228AF60600E6B655 /* CXBearingPlayerView.m */; };
+		5AEF9621228AF60600E6B655 /* CXPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AEF961C228AF60600E6B655 /* CXPlayerView.m */; };
 		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58F195388D20070C39A /* CoreGraphics.framework */; };
 		6003F592195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
@@ -46,19 +46,19 @@
 		255BBEFBA0F5B744AD5899FB /* Pods-CXPlayer_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CXPlayer_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-CXPlayer_Example/Pods-CXPlayer_Example.release.xcconfig"; sourceTree = "<group>"; };
 		35F9F332CC094DEF5FAD5A8D /* Pods-CXPlayer_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CXPlayer_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CXPlayer_Example/Pods-CXPlayer_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		47E052B1FA88F8A88451A852 /* CXPlayer.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = CXPlayer.podspec; path = ../CXPlayer.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		5A35236D22874211008911D8 /* CXPlayerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CXPlayerViewController.h; sourceTree = "<group>"; };
-		5A35236E22874211008911D8 /* CXPlayerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CXPlayerViewController.m; sourceTree = "<group>"; };
-		5AAC90A3228A937200968423 /* CXPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CXPlayerView.h; path = ../../../CXPlayer/Classes/CXPlayerView.h; sourceTree = "<group>"; };
-		5AAC90A4228A937200968423 /* CXPlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CXPlayerView.m; path = ../../../CXPlayer/Classes/CXPlayerView.m; sourceTree = "<group>"; };
-		5AAC90A5228A937200968423 /* CXBearingPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CXBearingPlayerView.h; path = ../../../CXPlayer/Classes/CXBearingPlayerView.h; sourceTree = "<group>"; };
-		5AAC90A6228A937200968423 /* CXPlayerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CXPlayerManager.h; path = ../../../CXPlayer/Classes/CXPlayerManager.h; sourceTree = "<group>"; };
-		5AAC90A7228A937200968423 /* CXPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CXPlayer.h; path = ../../../CXPlayer/Classes/CXPlayer.h; sourceTree = "<group>"; };
-		5AAC90A8228A937200968423 /* CXBearingPlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CXBearingPlayerView.m; path = ../../../CXPlayer/Classes/CXBearingPlayerView.m; sourceTree = "<group>"; };
-		5AAC90A9228A937200968423 /* CXPlayerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CXPlayerManager.m; path = ../../../CXPlayer/Classes/CXPlayerManager.m; sourceTree = "<group>"; };
-		5AAC90AA228A937200968423 /* UIImage+CXExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+CXExtension.m"; path = "../../../CXPlayer/Classes/UIImage+CXExtension.m"; sourceTree = "<group>"; };
-		5AAC90AB228A937200968423 /* UIImage+CXExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+CXExtension.h"; path = "../../../CXPlayer/Classes/UIImage+CXExtension.h"; sourceTree = "<group>"; };
+		5A35236D22874211008911D8 /* CXTestPlayerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CXTestPlayerViewController.h; sourceTree = "<group>"; };
+		5A35236E22874211008911D8 /* CXTestPlayerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CXTestPlayerViewController.m; sourceTree = "<group>"; };
 		5AEF96052289C59900E6B655 /* CXPlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXPlayViewController.m; sourceTree = "<group>"; };
 		5AEF960A2289C59900E6B655 /* CXPlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXPlayViewController.h; sourceTree = "<group>"; };
+		5AEF9615228AF60600E6B655 /* CXPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CXPlayerView.h; path = ../../../CXPlayer/Classes/CXPlayerView.h; sourceTree = "<group>"; };
+		5AEF9616228AF60600E6B655 /* CXPlayerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CXPlayerManager.h; path = ../../../CXPlayer/Classes/CXPlayerManager.h; sourceTree = "<group>"; };
+		5AEF9617228AF60600E6B655 /* CXPlayerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CXPlayerManager.m; path = ../../../CXPlayer/Classes/CXPlayerManager.m; sourceTree = "<group>"; };
+		5AEF9618228AF60600E6B655 /* UIImage+CXExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+CXExtension.m"; path = "../../../CXPlayer/Classes/UIImage+CXExtension.m"; sourceTree = "<group>"; };
+		5AEF9619228AF60600E6B655 /* CXBearingPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CXBearingPlayerView.h; path = ../../../CXPlayer/Classes/CXBearingPlayerView.h; sourceTree = "<group>"; };
+		5AEF961A228AF60600E6B655 /* CXPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CXPlayer.h; path = ../../../CXPlayer/Classes/CXPlayer.h; sourceTree = "<group>"; };
+		5AEF961B228AF60600E6B655 /* CXBearingPlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CXBearingPlayerView.m; path = ../../../CXPlayer/Classes/CXBearingPlayerView.m; sourceTree = "<group>"; };
+		5AEF961C228AF60600E6B655 /* CXPlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CXPlayerView.m; path = ../../../CXPlayer/Classes/CXPlayerView.m; sourceTree = "<group>"; };
+		5AEF961D228AF60600E6B655 /* UIImage+CXExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+CXExtension.h"; path = "../../../CXPlayer/Classes/UIImage+CXExtension.h"; sourceTree = "<group>"; };
 		6003F58A195388D20070C39A /* CXPlayer_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CXPlayer_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6003F58F195388D20070C39A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -125,18 +125,18 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		5AEF96042289C59900E6B655 /* CXPlayer */ = {
+		5AEF9614228AF5E700E6B655 /* CXPlayer */ = {
 			isa = PBXGroup;
 			children = (
-				5AAC90A5228A937200968423 /* CXBearingPlayerView.h */,
-				5AAC90A8228A937200968423 /* CXBearingPlayerView.m */,
-				5AAC90A7228A937200968423 /* CXPlayer.h */,
-				5AAC90A6228A937200968423 /* CXPlayerManager.h */,
-				5AAC90A9228A937200968423 /* CXPlayerManager.m */,
-				5AAC90A3228A937200968423 /* CXPlayerView.h */,
-				5AAC90A4228A937200968423 /* CXPlayerView.m */,
-				5AAC90AB228A937200968423 /* UIImage+CXExtension.h */,
-				5AAC90AA228A937200968423 /* UIImage+CXExtension.m */,
+				5AEF9619228AF60600E6B655 /* CXBearingPlayerView.h */,
+				5AEF961B228AF60600E6B655 /* CXBearingPlayerView.m */,
+				5AEF961A228AF60600E6B655 /* CXPlayer.h */,
+				5AEF9616228AF60600E6B655 /* CXPlayerManager.h */,
+				5AEF9617228AF60600E6B655 /* CXPlayerManager.m */,
+				5AEF9615228AF60600E6B655 /* CXPlayerView.h */,
+				5AEF961C228AF60600E6B655 /* CXPlayerView.m */,
+				5AEF961D228AF60600E6B655 /* UIImage+CXExtension.h */,
+				5AEF9618228AF60600E6B655 /* UIImage+CXExtension.m */,
 			);
 			path = CXPlayer;
 			sourceTree = "<group>";
@@ -178,7 +178,7 @@
 		6003F593195388D20070C39A /* Example for CXPlayer */ = {
 			isa = PBXGroup;
 			children = (
-				5AEF96042289C59900E6B655 /* CXPlayer */,
+				5AEF9614228AF5E700E6B655 /* CXPlayer */,
 				6003F59C195388D20070C39A /* CXAppDelegate.h */,
 				6003F59D195388D20070C39A /* CXAppDelegate.m */,
 				873B8AEA1B1F5CCA007FD442 /* Main.storyboard */,
@@ -186,8 +186,8 @@
 				6003F5A6195388D20070C39A /* CXViewController.m */,
 				5AEF960A2289C59900E6B655 /* CXPlayViewController.h */,
 				5AEF96052289C59900E6B655 /* CXPlayViewController.m */,
-				5A35236D22874211008911D8 /* CXPlayerViewController.h */,
-				5A35236E22874211008911D8 /* CXPlayerViewController.m */,
+				5A35236D22874211008911D8 /* CXTestPlayerViewController.h */,
+				5A35236E22874211008911D8 /* CXTestPlayerViewController.m */,
 				71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */,
 				6003F5A8195388D20070C39A /* Images.xcassets */,
 				6003F594195388D20070C39A /* Supporting Files */,
@@ -284,7 +284,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = CX;
-				LastUpgradeCheck = 0720;
+				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = caixiang305621856;
 				TargetAttributes = {
 					6003F589195388D20070C39A = {
@@ -410,15 +410,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5A35236F22874211008911D8 /* CXPlayerViewController.m in Sources */,
+				5A35236F22874211008911D8 /* CXTestPlayerViewController.m in Sources */,
 				6003F59E195388D20070C39A /* CXAppDelegate.m in Sources */,
-				5AAC90AC228A937200968423 /* CXPlayerView.m in Sources */,
-				5AAC90AF228A937200968423 /* UIImage+CXExtension.m in Sources */,
 				6003F5A7195388D20070C39A /* CXViewController.m in Sources */,
+				5AEF9620228AF60600E6B655 /* CXBearingPlayerView.m in Sources */,
+				5AEF961F228AF60600E6B655 /* UIImage+CXExtension.m in Sources */,
+				5AEF961E228AF60600E6B655 /* CXPlayerManager.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
 				5AEF960F2289C59900E6B655 /* CXPlayViewController.m in Sources */,
-				5AAC90AD228A937200968423 /* CXBearingPlayerView.m in Sources */,
-				5AAC90AE228A937200968423 /* CXPlayerManager.m in Sources */,
+				5AEF9621228AF60600E6B655 /* CXPlayerView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -476,19 +476,32 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -516,18 +529,31 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;

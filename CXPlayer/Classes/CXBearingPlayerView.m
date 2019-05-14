@@ -163,7 +163,7 @@ const CGFloat CXBearingPlayerViewlabelW = 50;
         self.topView.alpha = alpha;
         self.bottomView.alpha = alpha;
     } completion:^(BOOL finished) {
-        if (_isShowControl) {//如果当前是显示状态，就要去倒计时隐藏了
+        if (self->_isShowControl) {//如果当前是显示状态，就要去倒计时隐藏了
             [self startHideControlTimer];
         }
     }];

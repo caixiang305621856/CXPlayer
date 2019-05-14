@@ -37,8 +37,8 @@
 /**
  当前缓冲的时长
  
- @param playerView
- @param duration
+ @param playerView self
+ @param progress 进度
  */
 - (void)videoPlayer:(CXPlayerView *)playerView loadedTimeRangeDidChange:(CGFloat )progress;
 
@@ -76,7 +76,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  设置播放的Url
  
- @param url
+ @param url 播放地址
  */
 - (void)setUrl:(NSURL *)url;
 
@@ -85,7 +85,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  定位到多少秒后播放视频
  
- @param time
+ @param time 时间
  */
 - (void)seekToTime:(CGFloat )time;
 
@@ -135,7 +135,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  获取视频宽高比
  
- @param Url
+ @param URL 播放地址
  @return 视频宽高比
  */
 - (CGFloat )getVideoScale:(NSURL *)URL;
@@ -143,8 +143,8 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  获取网络视频的缩略图
  
- @param Url
- @param videoTime
+ @param URL 播放地址
+ @param videoTime 时间
  @return 网络视频的缩略图
  */
 - (UIImage *)getThumbnailImageFromVideoURL:(NSURL *)URL time:(NSTimeInterval )videoTime;
@@ -152,8 +152,8 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  获取本地视频缩略图
  
- @param videoPath
- @param videoTime
+ @param videoPath 本地地址
+ @param videoTime 时间
  @return 本地视频缩略图
  */
 - (UIImage *)getThumbnailImageFromFilePath:(NSString *)videoPath time:(NSTimeInterval )videoTime;
