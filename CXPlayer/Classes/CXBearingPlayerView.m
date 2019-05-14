@@ -56,7 +56,7 @@ const CGFloat CXBearingPlayerViewlabelW = 50;
 @implementation CXBearingPlayerView
 
 - (void)dealloc {
-    NSLog(@"🔥CXBearingPlayerView销毁了🔥");
+//    NSLog(@"🔥CXBearingPlayerView销毁了🔥");
 }
 
 - (instancetype)initWithFrame:(CGRect)frame {

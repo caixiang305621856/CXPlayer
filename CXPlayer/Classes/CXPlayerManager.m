@@ -98,48 +98,48 @@
     !self.playerStatusBlock?:self.playerStatusBlock(status);
     switch (status) {
         case CXAVPlayerStatusLoadingVideo:
-            NSLog(@"开始准备");
+//            NSLog(@"开始准备");
             //菊花
             break;
         case CXAVPlayerStatusReadyToPlay:
-            NSLog(@"准备完成");
+//            NSLog(@"准备完成");
             if (_seekToTime > 0) {
                 [self.playerView seekToTime:_seekToTime];
                 _seekToTime = 0;
             }
             break;
         case CXAVPlayerStatusPlay:
-            NSLog(@"正在播放");
+//            NSLog(@"正在播放");
             //隐藏菊花
             break;
         case CXAVPlayerStatusPlayEnd:
-            NSLog(@"播放完成");
+//            NSLog(@"播放完成");
             //隐藏菊花
             //回归初始状态 或 循环播放
             break;
         case CXAVPlayerStatusCacheData:
-            NSLog(@"缓冲视频");
+//            NSLog(@"缓冲视频");
             //菊花
             break;
         case CXAVPlayerStatusCacheEnd:
-            NSLog(@"缓冲完成");
+//            NSLog(@"缓冲完成");
             break;
         case CXAVPlayerStatusItemFailed:
             //隐藏菊花
             //报错页面
-            NSLog(@"视频资源问题");
+//            NSLog(@"视频资源问题");
             break;
         case CXAVPlayerStatusEnterBack:
-            NSLog(@"进入后台");
+//            NSLog(@"进入后台");
             break;
         case CXAVPlayerStatusResignActive:
-            NSLog(@"即将进入后台");
+//            NSLog(@"即将进入后台");
             if (!_isManualpPause) {
                 [self pause];
             }
             break;
         case CXAVPlayerStatusBecomeActive:
-            NSLog(@"进入前台");
+//            NSLog(@"进入前台");
             if (!_isManualpPause) {
                 [self play];
             }
