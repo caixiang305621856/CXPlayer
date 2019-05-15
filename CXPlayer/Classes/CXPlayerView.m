@@ -268,7 +268,9 @@ static void *VideoPlayer_PlayerItemLoadedTimeRangesContext = &VideoPlayer_Player
 #pragma mark - notification
 - (void)playerItemDidPlayToEndTime:(NSNotification *)notification {
     [self setDelegateStatus:CXAVPlayerStatusPlayEnd];
-    [self.player seekToTime:kCMTimeZero];
+    //    [self.player seekToTime:kCMTimeZero];
+    [self.player seekToTime:CMTimeMakeWithSeconds(1, 1) completionHandler:^(BOOL finished) {
+    }];
 }
 
 - (void)videoPlayWaiting:(NSNotification *)notic {
