@@ -26,6 +26,11 @@ Lane compilations
 fastlane ios cxremove_tag
 ```
 
+### ios GitHubLib
+```
+fastlane ios GitHubLib
+```
+
 ### ios CXLib
 ```
 fastlane ios CXLib
