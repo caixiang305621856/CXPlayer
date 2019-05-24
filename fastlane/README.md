@@ -16,19 +16,24 @@ or alternatively using `brew cask install fastlane`
 
 # Available Actions
 ## iOS
-### ios send_email
+### ios cx_send_email
 ```
-fastlane ios send_email
+fastlane ios cx_send_email
 ```
 Lane compilations
-### ios cxremove_tag
+### ios cx_remove_tag
 ```
-fastlane ios cxremove_tag
+fastlane ios cx_remove_tag
 ```
 
-### ios GitHubLib
+### ios cx_gitHubLib
 ```
-fastlane ios GitHubLib
+fastlane ios cx_gitHubLib
+```
+
+### ios cx_lib
+```
+fastlane ios cx_lib
 ```
 
 ### ios CXLib
