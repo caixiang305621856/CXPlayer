@@ -69,7 +69,7 @@
 - (void)playWithUrl:(NSString *)url {
     self.originFrame = self.backgroundView.frame;
     [self bearingPlayerView];
-    [self.playerView setUrl:[NSURL URLWithString:url]];
+    [self.playerView setUrl:[NSURL URLWithString:url] isCache:NO];
     [self.playerView play];
 }
 

@@ -67,6 +67,7 @@ const CGFloat CXBearingPlayerViewlabelW = 50;
             _isFullScreen = YES;
         }
         self.layer.masksToBounds = YES;
+        _isShowControl = YES;
         [self creatUI];
         [self showOrHideControlView];
     }
@@ -129,7 +130,6 @@ const CGFloat CXBearingPlayerViewlabelW = 50;
 }
 
 - (void)creatUI{
-    _isShowControl = YES;
     self.backgroundColor = [UIColor blackColor];
     //手势
     [self.fullScreenView addGestureRecognizer:self.tapGesture];

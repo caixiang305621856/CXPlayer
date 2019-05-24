@@ -24,8 +24,9 @@
     UIView *showPlayerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     showPlayerView.backgroundColor = [UIColor blackColor];
     [self.view addSubview:showPlayerView];
-    [self.playerManager playWithUrl:@"http://vfx.mtime.cn/Video/2019/05/07/mp4/190507094456874251.mp4" inView:showPlayerView];
-    [self.playerManager seekToTimePlay:14];
+    http://vfx.mtime.cn/Video/2019/05/07/mp4/190507094456874251.mp4
+    [self.playerManager playWithUrl:@"https://opensxb.oss-cn-beijing.aliyuncs.com/resource/recording/video/b99d8df4819c4f9d8359d99693fa72c5.mp4" inView:showPlayerView isCache:NO];
+//    [self.playerManager seekToTimePlay:14];
 }
 
 - (CXPlayerManager *)playerManager {

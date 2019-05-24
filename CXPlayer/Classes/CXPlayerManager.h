@@ -53,7 +53,7 @@ NS_ASSUME_NONNULL_BEGIN
  @param url url
  @param view 放播放的view
  */
-- (void)playWithUrl:(NSString *)url inView:(UIView *)view;
+- (void)playWithUrl:(NSString *)url inView:(UIView *)view isCache:(BOOL)isCache;;
 
 /**
  播放

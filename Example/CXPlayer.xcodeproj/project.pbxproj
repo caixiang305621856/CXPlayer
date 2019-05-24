@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		5A35236F22874211008911D8 /* CXTestPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A35236E22874211008911D8 /* CXTestPlayerViewController.m */; };
+		5A5CEB1C22979CFE00EBA3B4 /* CXPlayFileTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A5CEB1722979CFE00EBA3B4 /* CXPlayFileTool.m */; };
+		5A5CEB1D22979CFE00EBA3B4 /* NSURL+Protocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A5CEB1822979CFE00EBA3B4 /* NSURL+Protocol.m */; };
+		5A5CEB1E22979CFE00EBA3B4 /* CXResourceLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A5CEB1A22979CFE00EBA3B4 /* CXResourceLoader.m */; };
+		5A5CEB1F22979CFE00EBA3B4 /* CXDownLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A5CEB1B22979CFE00EBA3B4 /* CXDownLoader.m */; };
 		5AEF960F2289C59900E6B655 /* CXPlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AEF96052289C59900E6B655 /* CXPlayViewController.m */; };
 		5AEF961E228AF60600E6B655 /* CXPlayerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AEF9617228AF60600E6B655 /* CXPlayerManager.m */; };
 		5AEF961F228AF60600E6B655 /* UIImage+CXExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AEF9618228AF60600E6B655 /* UIImage+CXExtension.m */; };
@@ -48,6 +52,14 @@
 		47E052B1FA88F8A88451A852 /* CXPlayer.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = CXPlayer.podspec; path = ../CXPlayer.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		5A35236D22874211008911D8 /* CXTestPlayerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CXTestPlayerViewController.h; sourceTree = "<group>"; };
 		5A35236E22874211008911D8 /* CXTestPlayerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CXTestPlayerViewController.m; sourceTree = "<group>"; };
+		5A5CEB1422979CFE00EBA3B4 /* CXDownLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CXDownLoader.h; path = ../../../CXPlayer/Classes/CXDownLoader.h; sourceTree = "<group>"; };
+		5A5CEB1522979CFE00EBA3B4 /* CXResourceLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CXResourceLoader.h; path = ../../../CXPlayer/Classes/CXResourceLoader.h; sourceTree = "<group>"; };
+		5A5CEB1622979CFE00EBA3B4 /* CXPlayFileTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CXPlayFileTool.h; path = ../../../CXPlayer/Classes/CXPlayFileTool.h; sourceTree = "<group>"; };
+		5A5CEB1722979CFE00EBA3B4 /* CXPlayFileTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CXPlayFileTool.m; path = ../../../CXPlayer/Classes/CXPlayFileTool.m; sourceTree = "<group>"; };
+		5A5CEB1822979CFE00EBA3B4 /* NSURL+Protocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSURL+Protocol.m"; path = "../../../CXPlayer/Classes/NSURL+Protocol.m"; sourceTree = "<group>"; };
+		5A5CEB1922979CFE00EBA3B4 /* NSURL+Protocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSURL+Protocol.h"; path = "../../../CXPlayer/Classes/NSURL+Protocol.h"; sourceTree = "<group>"; };
+		5A5CEB1A22979CFE00EBA3B4 /* CXResourceLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CXResourceLoader.m; path = ../../../CXPlayer/Classes/CXResourceLoader.m; sourceTree = "<group>"; };
+		5A5CEB1B22979CFE00EBA3B4 /* CXDownLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CXDownLoader.m; path = ../../../CXPlayer/Classes/CXDownLoader.m; sourceTree = "<group>"; };
 		5AEF96052289C59900E6B655 /* CXPlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXPlayViewController.m; sourceTree = "<group>"; };
 		5AEF960A2289C59900E6B655 /* CXPlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXPlayViewController.h; sourceTree = "<group>"; };
 		5AEF9615228AF60600E6B655 /* CXPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CXPlayerView.h; path = ../../../CXPlayer/Classes/CXPlayerView.h; sourceTree = "<group>"; };
@@ -128,6 +140,14 @@
 		5AEF9614228AF5E700E6B655 /* CXPlayer */ = {
 			isa = PBXGroup;
 			children = (
+				5A5CEB1422979CFE00EBA3B4 /* CXDownLoader.h */,
+				5A5CEB1B22979CFE00EBA3B4 /* CXDownLoader.m */,
+				5A5CEB1622979CFE00EBA3B4 /* CXPlayFileTool.h */,
+				5A5CEB1722979CFE00EBA3B4 /* CXPlayFileTool.m */,
+				5A5CEB1522979CFE00EBA3B4 /* CXResourceLoader.h */,
+				5A5CEB1A22979CFE00EBA3B4 /* CXResourceLoader.m */,
+				5A5CEB1922979CFE00EBA3B4 /* NSURL+Protocol.h */,
+				5A5CEB1822979CFE00EBA3B4 /* NSURL+Protocol.m */,
 				5AEF9619228AF60600E6B655 /* CXBearingPlayerView.h */,
 				5AEF961B228AF60600E6B655 /* CXBearingPlayerView.m */,
 				5AEF961A228AF60600E6B655 /* CXPlayer.h */,
@@ -414,11 +434,15 @@
 				6003F59E195388D20070C39A /* CXAppDelegate.m in Sources */,
 				6003F5A7195388D20070C39A /* CXViewController.m in Sources */,
 				5AEF9620228AF60600E6B655 /* CXBearingPlayerView.m in Sources */,
+				5A5CEB1C22979CFE00EBA3B4 /* CXPlayFileTool.m in Sources */,
 				5AEF961F228AF60600E6B655 /* UIImage+CXExtension.m in Sources */,
+				5A5CEB1D22979CFE00EBA3B4 /* NSURL+Protocol.m in Sources */,
+				5A5CEB1F22979CFE00EBA3B4 /* CXDownLoader.m in Sources */,
 				5AEF961E228AF60600E6B655 /* CXPlayerManager.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
 				5AEF960F2289C59900E6B655 /* CXPlayViewController.m in Sources */,
 				5AEF9621228AF60600E6B655 /* CXPlayerView.m in Sources */,
+				5A5CEB1E22979CFE00EBA3B4 /* CXResourceLoader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

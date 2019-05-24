@@ -7,6 +7,8 @@
 //
 
 #import "CXPlayerView.h"
+#import "CXResourceLoader.h"
+#import "NSURL+Protocol.h"
 
 static void *VideoPlayer_PlayerItemStatusContext = &VideoPlayer_PlayerItemStatusContext;
 static void *VideoPlayer_PlayerItemPlaybackLikelyToKeepUp = &VideoPlayer_PlayerItemPlaybackLikelyToKeepUp;
@@ -19,6 +21,8 @@ static void *VideoPlayer_PlayerItemLoadedTimeRangesContext = &VideoPlayer_Player
 @property (nonatomic, strong) AVPlayerItem *playerItem;
 @property (nonatomic, strong) AVURLAsset *urlAsset;
 @property (nonatomic, strong) AVPlayerLayer *playerLayer;
+@property (nonatomic, strong) CXResourceLoader *resourceLoader;
+
 @property (nonatomic, assign) BOOL isPlaying;
 @property (nonatomic, strong) id timeObserverToken;
 //@property (nonatomic, strong) id playingTimeObserverToken;
@@ -73,16 +77,19 @@ static void *VideoPlayer_PlayerItemLoadedTimeRangesContext = &VideoPlayer_Player
 }
 
 #pragma mark - public
-- (void)setUrl:(NSURL *)url {
+- (void)setUrl:(NSURL *)url isCache:(BOOL)isCache{
     //如果有正在播放的视频 先释放掉
     [self resetPlayerItemIfNecessary];
+    if (isCache) {
+        url = [url streamingURL];
+    }
     self.urlAsset =[AVURLAsset assetWithURL:url];
-    [self creatPlayerWithAsset:self.urlAsset];
+    [self creatPlayerWithAsset:self.urlAsset isCache:isCache];
 }
 
-- (void)setAsset:(AVURLAsset *)asset {
+- (void)setAsset:(AVURLAsset *)asset isCache:(BOOL)isCache{
     [self resetPlayerItemIfNecessary];
-    [self creatPlayerWithAsset:asset];
+    [self creatPlayerWithAsset:asset isCache:isCache];
 }
 
 - (void)seekToTime:(CGFloat )time {
@@ -268,8 +275,8 @@ static void *VideoPlayer_PlayerItemLoadedTimeRangesContext = &VideoPlayer_Player
 #pragma mark - notification
 - (void)playerItemDidPlayToEndTime:(NSNotification *)notification {
     [self setDelegateStatus:CXAVPlayerStatusPlayEnd];
-    //    [self.player seekToTime:kCMTimeZero];
-    [self.player seekToTime:CMTimeMakeWithSeconds(1, 1) completionHandler:^(BOOL finished) {
+    [self.player seekToTime:kCMTimeZero completionHandler:^(BOOL finished) {
+        
     }];
 }
 
@@ -375,21 +382,34 @@ static void *VideoPlayer_PlayerItemLoadedTimeRangesContext = &VideoPlayer_Player
     }
 }
 
-- (void)creatPlayerWithAsset:(AVURLAsset *)urlAsset{
+- (void)creatPlayerWithAsset:(AVURLAsset *)urlAsset isCache:(BOOL)isCache{
+    
+    if (isCache) {
+        self.resourceLoader = [[CXResourceLoader alloc] init];
+        //缓存代理设置为 resourceLoader
+        [urlAsset.resourceLoader setDelegate:self.resourceLoader queue:dispatch_queue_create(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)];
+    }
+     
     // 初始化playerItem
     self.playerItem =[AVPlayerItem playerItemWithAsset:urlAsset];
+    
     if (@available(iOS 10.0, *)) {
         self.playerItem.preferredForwardBufferDuration =10.f;
-    } else {
-        // Fallback on earlier versions
     }
     if(!self.playerItem){
         [self reportUnableToCreatePlayerItem];
         return;
     }
     // 每次都重新创建Player，替换replaceCurrentItemWithPlayerItem:，该方法阻塞线程
-    self.player =[AVPlayer playerWithPlayerItem:self.playerItem];
-    self.playerLayer =[AVPlayerLayer playerLayerWithPlayer:self.player];
+    self.player = [AVPlayer playerWithPlayerItem:self.playerItem];
+    
+    if (isCache) {
+        if (@available(iOS 10.0, *)) {
+            self.player.automaticallyWaitsToMinimizeStalling = NO;
+        }
+    }
+    
+    self.playerLayer = [AVPlayerLayer playerLayerWithPlayer:self.player];
     // 此处为默认视频填充模式
     self.playerLayer.videoGravity = self.videoGravity;
     

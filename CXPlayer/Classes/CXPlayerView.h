@@ -78,9 +78,9 @@ NS_ASSUME_NONNULL_BEGIN
  
  @param url 播放地址
  */
-- (void)setUrl:(NSURL *)url;
+- (void)setUrl:(NSURL *)url isCache:(BOOL)isCache;
 
-- (void)setAsset:(AVURLAsset *)asset;
+- (void)setAsset:(AVURLAsset *)asset isCache:(BOOL)isCache;
 
 /**
  定位到多少秒后播放视频

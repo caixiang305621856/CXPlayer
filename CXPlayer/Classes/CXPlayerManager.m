@@ -48,16 +48,16 @@
 }
 
 #pragma mark - public
-- (void)playWithUrl:(NSString *)url inView:(UIView *)view{
+- (void)playWithUrl:(NSString *)url inView:(UIView *)view isCache:(BOOL)isCache;{
     if (view) {
         self.backgroundView = view;
         self.originFrame = view.frame;
         [self bearingPlayerView];
         if ([self isUrlAddress:url]) {
             NSString * encodingString = [url stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
-            [self.playerView setUrl:[NSURL URLWithString:encodingString]];
+            [self.playerView setUrl:[NSURL URLWithString:encodingString] isCache:isCache];
         } else{
-            [self.playerView setUrl:[NSURL fileURLWithPath:url]];
+            [self.playerView setUrl:[NSURL fileURLWithPath:url] isCache:isCache];
         }
         [self.playerView play];
     }
