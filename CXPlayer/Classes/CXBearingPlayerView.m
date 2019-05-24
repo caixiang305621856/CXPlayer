@@ -10,8 +10,8 @@
 #import "UIImage+CXExtension.h"
 #import <MediaPlayer/MediaPlayer.h>
 
-const CGFloat CXBearingPlayerViewTopHeight = 50;
-const CGFloat CXBearingPlayerViewBottomHeight = 40;
+const CGFloat CXBearingPlayerViewTopHeight = 60;
+const CGFloat CXBearingPlayerViewBottomHeight = 50;
 const CGFloat CXBearingPlayerViewBtnW = 40;
 const CGFloat CXBearingPlayerViewBtnH = 40;
 const CGFloat CXBearingPlayerViewlabelW = 50;
@@ -68,6 +68,7 @@ const CGFloat CXBearingPlayerViewlabelW = 50;
         }
         self.layer.masksToBounds = YES;
         [self creatUI];
+        [self showOrHideControlView];
     }
     return self;
 }
@@ -85,7 +86,7 @@ const CGFloat CXBearingPlayerViewlabelW = 50;
     
     CGFloat left = _isFullScreen?play_viewSafeArea(self.superview).left > 0?play_viewSafeArea(self.superview).left - 15:0:0;
     CGFloat right = _isFullScreen?play_viewSafeArea(self.superview).right> 0?play_viewSafeArea(self.superview).right - 15:0:0;
-    CGFloat top = 0;
+    CGFloat top = 20;
     CGFloat bottom = 0;
     
     if (_isFullScreen) {
@@ -99,7 +100,7 @@ const CGFloat CXBearingPlayerViewlabelW = 50;
             bottom = play_viewSafeArea(self.superview).bottom;
         }
     } else{
-        top = 10;
+        top = 20;
         bottom = 0;
     }
     
@@ -110,7 +111,7 @@ const CGFloat CXBearingPlayerViewlabelW = 50;
         [self.backButton setImage:[UIImage cx_imageNamedFromMyBundle:@"btn_back_close"] forState:UIControlStateNormal];
     }
     CGFloat topViewH = _isFullScreen?CXBearingPlayerViewTopHeight + top:CXBearingPlayerViewTopHeight;
-    CGFloat bottomViewH = _isFullScreen?CXBearingPlayerViewTopHeight + bottom:CXBearingPlayerViewBottomHeight;
+    CGFloat bottomViewH = _isFullScreen?CXBearingPlayerViewBottomHeight + bottom:CXBearingPlayerViewBottomHeight;
     
     //顶部
     self.topView.frame = CGRectMake(0, 0, _frame.size.width, topViewH);
@@ -120,9 +121,9 @@ const CGFloat CXBearingPlayerViewlabelW = 50;
     
     //低部
     self.bottomView.frame = CGRectMake(0, _frame.size.height - CXBearingPlayerViewBottomHeight - bottom, _frame.size.width, bottomViewH);
-    self.playButton.frame = CGRectMake(left, 0, CXBearingPlayerViewBtnW, CXBearingPlayerViewBtnH);
+    self.playButton.frame = CGRectMake(left, (CXBearingPlayerViewBottomHeight - CXBearingPlayerViewBtnH)/2, CXBearingPlayerViewBtnW, CXBearingPlayerViewBtnH);
     self.currentLabel.frame = CGRectMake(CGRectGetMaxX(self.playButton.frame), 0, CXBearingPlayerViewlabelW, CXBearingPlayerViewBottomHeight);
-    self.fullScreenButton.frame = CGRectMake(_frame.size.width - CXBearingPlayerViewBtnW - right, 0, CXBearingPlayerViewBtnW, CXBearingPlayerViewBtnH);
+    self.fullScreenButton.frame = CGRectMake(_frame.size.width - CXBearingPlayerViewBtnW - right, (CXBearingPlayerViewBottomHeight - CXBearingPlayerViewBtnH)/2, CXBearingPlayerViewBtnW, CXBearingPlayerViewBtnH);
     self.totalLabel.frame = CGRectMake(_frame.size.width - CXBearingPlayerViewlabelW - CXBearingPlayerViewBtnW - right, 0, CXBearingPlayerViewlabelW, CXBearingPlayerViewBottomHeight);
     self.videoSlider.frame = CGRectMake(CGRectGetMaxX(self.currentLabel.frame) + 5, 0, _frame.size.width - CGRectGetMaxX(self.currentLabel.frame) - self.totalLabel.frame.size.width - self.fullScreenButton.frame.size.width - 10 - right , CXBearingPlayerViewBottomHeight);
 }
@@ -146,8 +147,20 @@ const CGFloat CXBearingPlayerViewlabelW = 50;
 #pragma mark - private
 //转换时间格式
 - (NSString *)timeFormatted:(NSInteger)totalSeconds {
-    NSInteger seconds = totalSeconds % 60;
-    NSInteger minutes = (totalSeconds / 60) % 60;
+    NSUInteger hours = 0;
+    NSUInteger minutes = 0;
+    NSUInteger seconds = 0;
+    
+    seconds = totalSeconds % 60;
+    if (totalSeconds >= 3600) {
+        hours = totalSeconds/3600;
+        minutes = (totalSeconds % 3600) / 60;
+    } else{
+        minutes = (totalSeconds / 60) % 60;
+    }
+    if (hours) {
+        return [NSString stringWithFormat:@"%02ld:%02ld",hours *60 + minutes, seconds];
+    }
     return [NSString stringWithFormat:@"%02ld:%02ld",minutes, seconds];
 }
 
